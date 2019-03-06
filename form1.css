@@ -1,24 +1,46 @@
 body{
 	font-family:sans-serif;
+	padding:50px;
 }
 
 form{
 	display: table;
+	border-spacing:10px;
+	width:790px;
+	padding:0px;
 }
 
-div.tableRow {
+
+div.tableRow  {
 	display: table-row;
-}
-
-div.tableRow p {
-	display: table-cell;
-	vertical-align: top;
-	padding: 8px;
-}
-div.tableRow p:first-child {
-	text-align: left;
+	
 }
 
 
+#form1{
+	width:800px;
+	margin-left:auto;
+	margin-right:auto;
+	padding:20px;
+}
 
+input{
+	height:34px;
+	padding-left:5px;
+	padding-right:5px;
+	margin:0px;
+	width:770px;
+}
+
+
+
+
+div.tableRow input:hover{
+	border-color:#375830;
+}
+
+
+div.tableRow input:active{
+	border-color:#65c294;
+}
 
