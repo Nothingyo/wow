@@ -1,13 +1,12 @@
 body{
 	font-family:sans-serif;
-	padding:50px;
+	
 }
 
 form{
 	display: table;
 	border-spacing:10px;
 	width:790px;
-	padding:0px;
 }
 
 
@@ -33,6 +32,9 @@ input{
 }
 
 
+#color,#submit{
+	width:60px;
+}
 
 
 div.tableRow input:hover{
