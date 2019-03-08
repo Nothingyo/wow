@@ -1,0 +1,40 @@
+<!DOCTYPE html >
+<html>
+<head>
+<meta charset="utf-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<title></title>
+<link href="position2.css" rel="stylesheet">
+<script type="text/javascript">
+    //显示子菜单
+    function showSubMenu(li){
+        var subMenu = li.getElementsByTagName("ul")[0];
+        subMenu.style.display = "block";
+    }
+
+    //隐藏子菜单
+    function hideSubMenu(li){
+        var subMenu = li.getElementsByTagName("ul")[0];
+        subMenu.style.display = "none";
+    }
+</script>
+</head>
+<body>
+	<div class="main">
+		<h1>墨刀实验室</h1>
+	</div>
+	
+    <ul id="navigation">
+        <li onmouseover="showSubMenu(this)" onmouseout="hideSubMenu(this)"><a href="#">所有项目组</a>
+            <ul>
+                <li>所有项目</li>
+                <li>锁定</li>
+                <li>私密</li>
+            </ul>
+        </li>
+  
+    </ul>
+	
+
+</body>
+</html>
