@@ -1,0 +1,153 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>navigation</title>
+
+<style>
+	*{
+		margin:0px;
+		padding:0px;
+	}
+	ul{
+		list-style-type:none;	
+	}
+	li{
+		float:left;
+		width:46px;
+		height:48px;
+	}
+	div{
+		font-size:15px;
+		text-align:center;
+	}
+	a:link,a:visited,a:active{
+		color:#CD5C5C;
+		text-decoration:none;
+	}
+	ul{
+		display:flex;
+	}
+	
+</style>
+</head>
+<body>
+	<div id="menu">
+		<ul >
+			<li class="nav">
+				<a href="#"><div id="shouye">
+					<div><span>" "</span></div>
+					<div>首页</div>
+				</div></a>
+			</li>
+			<li class="nav">
+				<a href="#"><div id="donghua">
+					<div><span>879</span></div>
+					<div>动画</div>
+				</div></a>
+			</li>
+			<li class="nav">
+				<a href="#"><div id="fanju">
+					<div><span>138</span></div>
+					<div>番剧</div>
+				</div></a>
+			</li>
+			<li class="nav">
+				<a href="#"><div id="guochuang">
+					<div><span>61</span></div>
+					<div>国创</div>
+				</div></a>
+			</li>
+			<li class="nav">
+				<a href="#"><div id="yinyue">
+					<div><span>999</span></div>
+					<div>音乐</div>
+				</div></a>
+			</li>
+			<li class="nav">
+				<a href="#"><div id="wudao">
+					<div><span>194</span></div>
+					<div>舞蹈</div>
+				</div></a>
+			</li>
+			<li class="nav">
+				<a href="#"><div id="youxi">
+					<div><span>999</span></div>
+					<div>游戏</div>
+				</div></a>
+			</li>
+			<li class="nav">
+				<a href="#"><div id="keji">
+					<div><span>999</span></div>
+					<div>科技</div>
+				</div></a>
+			</li>
+			<li class="nav">
+				<a href="#"><div id="shuma">
+					<div><span>265</span></div>
+					<div>数码</div>
+				</div></a>
+			</li>
+			<li class="nav">
+				<a href="#"><div id="shenghuo">
+					<div><span>999</span></div>
+					<div>生活</div>
+				</div></a>
+			</li>
+			<li class="nav">
+				<a href="#"><div id="guichu">
+					<div><span>62</span></div>
+					<div>鬼畜</div>
+				</div></a>
+			</li>
+			<li class="nav">
+				<a href="#"><div id="shishang">
+					<div><span>407</span></div>
+					<div>时尚</div>
+				</div></a>
+			</li>
+			<li class="nav">
+				<a href="#"><div id="guanggao">
+					<div><span>61</span></div>
+					<div>广告</div>
+				</div></a>
+			</li>
+			<li class="nav">
+				<a href="#"><div id="yule">
+					<div><span>999</span></div>
+					<div>娱乐</div>
+				</div></a>
+			</li>
+			<li class="nav">
+				<a href="#"><div id="yingshi">
+					<div><span>999</span></div>
+					<div>影视</div>
+				</div></a>
+			</li>
+			<li class="nav">
+				<a href="#"><div id="fangyingting">
+					<div><span>188</span></div>
+					<div>放映厅</div>
+				</div></a>
+			</li>
+		</ul>
+	</div>
+	<button id="print" onclick="print1()">打印</button>
+	<button id="delete" onclick="delete1()">删除放映厅</button>
+	<script type="text/javascript">
+	
+    function print1(){
+		var li=document.getElementsByTagName("li");
+		var span=document.getElementsByTagName("span");
+			for(var i=0;i<li.length;i++){
+				var div2=li[i].getElementsByTagName("div")[2];
+				console.log(span[i].innerHTML+" "+div2.innerHTML+";");
+			}
+	}
+	function delete1(){
+		var id=document.getElementById("fangyingting");
+		id.parentNode.parentNode.removeChild(id.parentNode.parentNode.childNodes[0]);
+	}
+	</script>
+</body>
+</html>
