@@ -8,6 +8,12 @@
 	*{
 		margin:0px;
 		padding:0px;
+		font-family:sans-serif;
+	}
+	body{
+		width:980px;
+		margin:auto;
+		margin-top:30px;
 	}
 	ul{
 		list-style-type:none;	
@@ -18,15 +24,45 @@
 		height:48px;
 	}
 	div{
-		font-size:15px;
+		font-size:12px;
 		text-align:center;
 	}
+	#menu a div>div{
+		top:8px;
+		left:0px;
+		height:14px;
+		width:100%;
+	}
+	span{
+		background-color:#ffafc9;
+		height:12px;
+		padding:1px 3px;
+		color:#fff;
+		border-radius:3px;
+		max-width:28px;
+	}
+	.nav .font{
+		height:40px;
+		padding-top:8px;
+		color:#222;
+	}
 	a:link,a:visited,a:active{
-		color:#CD5C5C;
 		text-decoration:none;
 	}
 	ul{
 		display:flex;
+	}
+	img{
+		height:18px;
+		width:18px;
+	}
+	img[src=" "],img:not([src]){
+		opacity:0;
+	}
+	#shouye img{
+		height:23px;
+		width:23px;
+		padding-bottom:2px;
 	}
 	
 </style>
@@ -36,98 +72,128 @@
 		<ul >
 			<li class="nav">
 				<a href="#"><div id="shouye">
-					<div><span>" "</span></div>
-					<div>首页</div>
+					<div><img src="image/shouye.png"></div>
+					<div class="font">首页</div>
 				</div></a>
 			</li>
 			<li class="nav">
 				<a href="#"><div id="donghua">
 					<div><span>879</span></div>
-					<div>动画</div>
+					<div class="font">动画</div>
 				</div></a>
 			</li>
 			<li class="nav">
 				<a href="#"><div id="fanju">
 					<div><span>138</span></div>
-					<div>番剧</div>
+					<div class="font">番剧</div>
 				</div></a>
 			</li>
 			<li class="nav">
 				<a href="#"><div id="guochuang">
 					<div><span>61</span></div>
-					<div>国创</div>
+					<div class="font">国创</div>
 				</div></a>
 			</li>
 			<li class="nav">
 				<a href="#"><div id="yinyue">
-					<div><span>999</span></div>
-					<div>音乐</div>
+					<div><span>999+</span></div>
+					<div class="font">音乐</div>
 				</div></a>
 			</li>
 			<li class="nav">
 				<a href="#"><div id="wudao">
 					<div><span>194</span></div>
-					<div>舞蹈</div>
+					<div class="font">舞蹈</div>
 				</div></a>
 			</li>
 			<li class="nav">
 				<a href="#"><div id="youxi">
-					<div><span>999</span></div>
-					<div>游戏</div>
+					<div><span>999+</span></div>
+					<div class="font">游戏</div>
 				</div></a>
 			</li>
 			<li class="nav">
 				<a href="#"><div id="keji">
-					<div><span>999</span></div>
-					<div>科技</div>
+					<div><span>999+</span></div>
+					<div class="font">科技</div>
 				</div></a>
 			</li>
 			<li class="nav">
 				<a href="#"><div id="shuma">
 					<div><span>265</span></div>
-					<div>数码</div>
+					<div class="font">数码</div>
 				</div></a>
 			</li>
 			<li class="nav">
 				<a href="#"><div id="shenghuo">
-					<div><span>999</span></div>
-					<div>生活</div>
+					<div><span>999+</span></div>
+					<div class="font">生活</div>
 				</div></a>
 			</li>
 			<li class="nav">
 				<a href="#"><div id="guichu">
 					<div><span>62</span></div>
-					<div>鬼畜</div>
+					<div class="font">鬼畜</div>
 				</div></a>
 			</li>
 			<li class="nav">
 				<a href="#"><div id="shishang">
 					<div><span>407</span></div>
-					<div>时尚</div>
+					<div class="font">时尚</div>
 				</div></a>
 			</li>
 			<li class="nav">
 				<a href="#"><div id="guanggao">
 					<div><span>61</span></div>
-					<div>广告</div>
+					<div class="font">广告</div>
 				</div></a>
 			</li>
 			<li class="nav">
 				<a href="#"><div id="yule">
-					<div><span>999</span></div>
-					<div>娱乐</div>
+					<div><span>999+</span></div>
+					<div class="font">娱乐</div>
 				</div></a>
 			</li>
 			<li class="nav">
 				<a href="#"><div id="yingshi">
-					<div><span>999</span></div>
-					<div>影视</div>
+					<div><span>999+</span></div>
+					<div class="font">影视</div>
 				</div></a>
 			</li>
 			<li class="nav">
 				<a href="#"><div id="fangyingting">
 					<div><span>188</span></div>
-					<div>放映厅</div>
+					<div class="font">放映厅</div>
+				</div></a>
+			</li>
+			<li class="nav">
+				<a href="#"><div id="zhuanlan">
+					<div><img src="image/zhuanlan.png"></div>
+					<div class="font">专栏</div>
+				</div></a>
+			</li>
+			<li class="nav">
+				<a href="#"><div id="guangchang">
+					<div><img src="image/guangchang.png"></div>
+					<div class="font">广场</div>
+				</div></a>
+			</li>
+			<li class="nav">
+				<a href="#"><div id="zhibo">
+					<div><img src="image/zhibo.png"></div>
+					<div class="font">直播</div>
+				</div></a>
+			</li>
+			<li class="nav">
+				<a href="#"><div id="xiaoheiwu">
+					<div><img src="image/xiaoheiwu.png"></div>
+					<div class="font">小黑屋</div>
+				</div></a>
+			</li>
+			<li class="nav">
+				<a href="#"><div id="video">
+					<div><img></div>
+					<div class="font">video</div>
 				</div></a>
 			</li>
 		</ul>
@@ -139,9 +205,9 @@
     function print1(){
 		var li=document.getElementsByTagName("li");
 		var span=document.getElementsByTagName("span");
-			for(var i=0;i<li.length;i++){
+			for(var i=1;i<li.length-5;i++){
 				var div2=li[i].getElementsByTagName("div")[2];
-				console.log(span[i].innerHTML+" "+div2.innerHTML+";");
+				console.log(span[i-1].innerHTML+" "+div2.innerHTML+";");
 			}
 	}
 	function delete1(){
