@@ -1,0 +1,78 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>calculator</title>
+		<style>
+			*{
+				margin:0px;
+				padding:0px;
+			}
+			th,td,button{
+				width:32px;
+				height:23px;
+			}
+		</style>
+		<script>
+			var exp="";
+			var res=" ";
+			function number(num){
+				var s=document.getElementById("screen");
+				exp+=num;
+				s.value=exp;console.log(s);console.log(exp);
+			}
+			function del(){
+				var s=document.getElementById("screen");
+				if(!exp) {s.value="Error";console.log(s.value);}
+				else {exp=exp.replace(exp[exp.length-1],"");s.value=exp;}
+			}
+			function result(){
+				var s=document.getElementById("screen");	
+					s.value=eval(exp);
+					exp=""+s.value;
+				console.log(exp);}
+			function ac(){
+				var s=document.getElementById("screen");
+				s.value="0";
+				exp="";
+				console.log(s.value);
+			}
+		</script>
+	</head>
+	<body>
+		<div id="main">
+			<table border=1;>
+			<tr><th><input type="text"  id="screen" value="0"></th></tr>
+			<tr>
+				<td><button id="7" onclick="number(7)">7</button></td>
+				<td><button id="8" onclick="number(8)">8</button></td>
+				<td><button id="9" onclick="number(9)">9</button></td>
+				<td><button id="DEL" onclick="del()">DEL</button></td>
+				<td><button id="AC" onclick="ac()">AC</button></td>
+				
+			</tr>
+			<tr>
+				<td><button id="4" onclick="number(4)">4</button></td>
+				<td><button id="5" onclick="number(5)">5</button></td>
+				<td><button id="6" onclick="number(6)">6</button></td>
+				<td><button id="*" onclick="number('*')">*</button></td>
+				<td><button id="/" onclick="number('/')">/</button></td>
+				
+			</tr>
+			<tr>
+				<td><button id="1" onclick="number(1)">1</button></td>
+				<td><button id="2" onclick="number(2)">2</button></td>
+				<td><button id="3" onclick="number(3)">3</button></td>
+				<td><button id="+" onclick="number('+')">+</button></td>
+				<td><button id="-" onclick="number('-')">-</button></td>
+				
+			</tr>
+			<tr>
+				<td><button id="0" onclick="number(0)">0</button></td>
+				<td><button id="." onclick="number('.')">.</button></td>
+				<td><button id="=" onclick="result()">=</button></td>
+			</tr>
+			</table>
+		</div>
+	</body>
+</html>
