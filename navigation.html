@@ -17,6 +17,8 @@
 	}
 	ul{
 		list-style-type:none;	
+		display:flex;
+		padding-top:9px;
 	}
 	li{
 		float:left;
@@ -27,12 +29,14 @@
 		font-size:12px;
 		text-align:center;
 	}
+	
 	#menu a div>div{
 		top:8px;
 		left:0px;
 		height:14px;
 		width:100%;
 	}
+
 	span{
 		background-color:#ffafc9;
 		height:12px;
@@ -40,6 +44,7 @@
 		color:#fff;
 		border-radius:3px;
 		max-width:28px;
+		display:inline-block;
 	}
 	.nav .font{
 		height:40px;
@@ -49,9 +54,7 @@
 	a:link,a:visited,a:active{
 		text-decoration:none;
 	}
-	ul{
-		display:flex;
-	}
+	
 	img{
 		height:18px;
 		width:18px;
@@ -201,6 +204,47 @@
 	<button id="print" onclick="print1()">打印</button>
 	<button id="delete" onclick="delete1()">删除放映厅</button>
 	<script type="text/javascript">
+	<!--动态展示部-->
+	const data=[
+		{name:'动画',number:87},
+		{name:'番剧' , number:18 },
+		{name:'国创' , number:61 },
+		{name:'音乐' , number:1230 },
+		{name:'舞蹈' , number:194 },
+		{name:'游戏' , number:1000 },
+		{name:'科技' , number:998 },
+		{name:'数码' , number:265 },
+		{name:'生活' , number:1010 },
+		{name:'鬼畜' , number:62 },
+		{name:'时尚' , number:407 },
+		{name:'广告' , number:61 },
+		{name:'娱乐' , number:2309 },
+		{name:'影视' , number:999 },
+		{name:'放映厅' , number:188 }
+	]
+	
+	data.forEach(function(item,index){
+		var number1=document.getElementsByTagName("span");
+		if(item.number>999) number1[index].innerHTML='999+';
+		else number1[index].innerHTML=item.number;
+		var font=document.getElementsByClassName("font");
+		font[index+1].innerHTML=item.name;
+	})
+	
+	function foreach(data,f,t){
+		try{ data.forEach(f,t);}
+		catch(e){
+			if(e===foreach.break) return;
+			else throw e;
+		}
+	}
+	foreach.break= new Error("StopIteration");
+	
+	<!--没想好用map做什么，随便写了一个功能-->
+	var copy=data.map(function(x){return x.name+"->"+x.number;})
+	console.log(copy);
+	
+	<!--动态展示部分结束-->
 	
     function print1(){
 		var li=document.getElementsByTagName("li");
