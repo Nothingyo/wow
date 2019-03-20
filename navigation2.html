@@ -1,0 +1,166 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>navigation2</title>
+
+<style>
+	*{
+		margin:0px;
+		padding:0px;
+		font-family:sans-serif;
+	}
+	body{
+		width:980px;
+		margin:auto;
+		margin-top:30px;
+	}
+	ul{
+		list-style-type:none;	
+		display:flex;
+		padding-top:9px;
+	}
+	li{
+		float:left;
+		width:46px;
+		height:48px;
+	}
+	div,div1,div2,div3{
+		font-size:12px;
+		text-align:center;
+	}
+	
+	#menu a div>div{
+		top:8px;
+		left:0px;
+		height:14px;
+		width:100%;
+	}
+
+	span{
+		background-color:#ffafc9;
+		height:12px;
+		padding:1px 3px;
+		color:#fff;
+		border-radius:3px;
+		max-width:28px;
+		display:inline-block;
+	}
+	.nav .font{
+		height:40px;
+		padding-top:8px;
+		color:#222;
+	}
+	
+	
+	a:link,a:visited,a:active{
+		text-decoration:none;
+	}
+	<!-->
+	img{
+		height:18px;
+		width:18px;
+	}
+	img[src=" "],img:not([src]){
+		opacity:0;
+	}
+	#shouye img{
+		height:23px;
+		width:23px;
+		padding-bottom:2px;
+	}
+	<-->
+	
+</style>
+</head>
+<body>
+	<div id="menu">
+		
+	</div>
+	<button id="print" onclick="print1()">打印</button>
+	<button id="delete" onclick="delete1()">删除放映厅</button>
+	<script type="text/javascript">
+	//动态展示部
+	const data=[
+		{name:'动画',number:87},
+		{name:'番剧' , number:18 },
+		{name:'国创' , number:61 },
+		{name:'音乐' , number:1230 },
+		{name:'舞蹈' , number:194 },
+		{name:'游戏' , number:1000 },
+		{name:'科技' , number:998 },
+		{name:'数码' , number:265 },
+		{name:'生活' , number:1010 },
+		{name:'鬼畜' , number:62 },
+		{name:'时尚' , number:407 },
+		{name:'广告' , number:61 },
+		{name:'娱乐' , number:2309 },
+		{name:'影视' , number:999 },
+		{name:'放映厅' , number:188 }
+	]
+	
+	var ul=document.createElement("ul");
+	//console.log(data.length);
+	var menu=document.getElementById("menu");
+	menu.appendChild(ul);
+	
+	data.forEach(function(item,index){
+		var li=document.createElement("li");
+		var a=document.createElement("a");
+		var div1=document.createElement("div");
+		var div2=document.createElement("div");
+		var span=document.createElement("span");
+		var div3=document.createElement("div");
+		
+		li.setAttribute("class","nav");
+		a.setAttribute("href","#");
+		div3.setAttribute("class","font");
+				
+		
+		div2.appendChild(span);
+		div1.appendChild(div2);
+		div1.appendChild(div3);
+		a.appendChild(div1);
+		li.appendChild(a);
+		ul.appendChild(li);
+		
+		if(item.number>999) span.innerHTML='999+';
+		else span.innerHTML=item.number;
+		var font=document.getElementsByClassName("font");
+		font[index].innerText=item.name;
+
+
+		
+		
+	})
+	
+	function foreach(data,f,t){
+		try{ data.forEach(f,t);}
+		catch(e){
+			if(e===foreach.break) return;
+			else throw e;
+		}
+	}
+	foreach.break= new Error("StopIteration");
+	
+	//没想好用map做什么，随便写了一个功能
+	var copy=data.map(function(x){return x.name+"->"+x.number;})
+	console.log(copy);
+	
+	//动态展示部分结束
+	
+    function print1(){
+		var li=document.getElementsByTagName("li");
+		var span=document.getElementsByTagName("span");
+			for(var i=0;i<li.length-1;i++){
+				var div2=li[i].getElementsByTagName("div")[2];
+				console.log(span[i].innerHTML+" "+div2.innerHTML+";");
+			}
+	}
+	function delete1(){
+		var a=document.getElementsByTagName("a");
+		a[a.length-1].parentNode.removeChild(a[a.length-1].parentNode.childNodes[0]);
+	}
+	</script>
+</body>
+</html>
