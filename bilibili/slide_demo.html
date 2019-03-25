@@ -1,0 +1,184 @@
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+  <title>slide_demo</title>
+  <style>
+        *{
+            margin: 0px;
+            padding: 0px;
+        }
+    #header{
+      height:170px;
+      position:relative;
+    }
+    #slide{
+      width:980px;
+      height:220px;
+    }
+    #slide1 , #slide2{
+      display: inline-block;
+    }
+    #slide1,#slide1 img,#slide1 ul{
+      position: absolute;
+      z-index: 1;
+      width:440px;
+      height:220px;
+    }
+    #slide1 .title{
+      z-index: 2;
+      position:absolute;
+      bottom: 0;
+      left:0;
+      width: 100%;
+      height: 35px;
+     
+    }
+    #slide1 .title a{
+      position: relative;
+      padding-left: 10px;
+      top: 9px;
+      z-index:-1;
+      width:280px;
+      color: #fff;
+      font-size: 14px;
+      text-decoration: none;
+    }
+    #slide1 .trig{
+      position: absolute;
+      z-index: 3;
+      bottom: 6px;
+      right: 20px;
+      height: 22px;
+      width: 130px;
+    }
+    .trig li,#slide1 .trig li img{
+      display: inline-block;
+      width:18px;
+      height: 18px;
+    }
+    #slide2{
+      width:540px;
+      height:220px;
+    }
+    
+    </style>
+</head>
+<body>
+    <div id="all">
+      <div id="header"></div>
+
+      <div id="main">
+        <div id="slide">
+          <div id="slide1">
+
+          </div>
+          <div id="slide2"></div>
+        </div>
+      </div>
+
+      <div id="footer"></div>
+    </div>
+
+
+</body>
+
+ <script>
+
+  let currentIndex = 0;
+  const images = [
+    {
+      url: 'picture/1.jpg',
+    },
+    {
+      url: 'picture/2.jpg',
+    },
+    {
+      url: 'picture/3.jpg',
+    },
+    {
+      url: 'picture/4.jpg',
+    },
+    {
+      url: 'picture/5.jpg',
+    }
+  ]
+
+  var str1='<ul class="picture"></ul><ul class="title"></ul><ul class="trig"></ul>';
+  var slide1=document.querySelector("#slide1");
+  slide1.innerHTML=str1;
+
+
+  function showImages () {
+    //console.log(`currentIndex`);
+    var str  = ` <li><a href="#"><img src=${images[currentIndex].url}></a></li>`;
+
+    var slide1_img = document.querySelector('.picture');
+    slide1_img.innerHTML = str;
+  }
+
+  const title=[
+  {name:'挑战第一次，不试你怎么知道？'},
+  {name:'疑案追声'},
+  {name:'考研冲鸭！'},
+  {name:'舞蹈'},
+  {name:'爱是孤独的开始'}
+]
+
+  function showTitles(){
+    var str='<a href="#">'+title[currentIndex].name+'</a>';
+    var slide1_title=document.querySelector('.title');
+    slide1_title.innerHTML=str;
+  }
+
+
+for(var i=0;i<5;i++){
+  var trig=document.querySelector('.trig');
+  var li=document.createElement('li');
+  li.innerHTML="<img src='picture/cm_2.png' style='height:18px ,width:18px'>";
+  trig.appendChild(li);
+}
+
+function wd(x,y){
+  this.style.height=y+'px';
+  this.style.width=x+'px';
+}
+function showTrig(){
+  var cur_li=document.getElementsByClassName('trig').children;
+  console.log(cur_li);
+  //cur_li[currentIndex].wd(21,21);
+  //cur_li[currentIndex].children[0].wd(21,21);
+}
+
+showImages();
+showTitles();
+showTrig();
+
+var time;
+function showtime(){
+  time=setInterval(() => {
+    showImages();
+    showTitles();
+    showTrig();
+    currentIndex += 1;
+    if (currentIndex >= images.length) {
+      currentIndex = 0;
+    }
+  }, 2000); 
+  }
+
+showtime();
+
+var ele=document.getElementById("slide1");
+  ele.onmouseover=function(){
+    clearInterval(time);console.log("onmouseover");
+  }
+  ele.onmouseout=function(){
+    showtime();
+  }
+
+
+ </script>
+</html>
