@@ -94,19 +94,19 @@
   let currentIndex = 0;
   const images = [
     {
-      url: 'picture/1.jpg',name:'挑战第一次，不试你怎么知道？',trig:'picture/trig0.png'
+      url: 'picture/1.jpg',name:'挑战第一次，不试你怎么知道？'
     },
     {
-      url: 'picture/2.jpg',name:'疑案追声',trig:'picture/trig0.png'
+      url: 'picture/2.jpg',name:'疑案追声'
     },
     {
-      url: 'picture/3.jpg',name:'考研冲鸭！',trig:'picture/trig0.png'
+      url: 'picture/3.jpg',name:'考研冲鸭！'
     },
     {
-      url: 'picture/4.jpg',name:'舞蹈',trig:'picture/trig0.png'
+      url: 'picture/4.jpg',name:'舞蹈'
     },
     {
-      url: 'picture/5.jpg',name:'爱是孤独的开始',trig:'picture/trig0.png'
+      url: 'picture/5.jpg',name:'爱是孤独的开始'
     }
   ]
   //
@@ -114,9 +114,8 @@
   var slide1=document.querySelector("#slide1");
   slide1.innerHTML=str1;
 
-
+//显示图片和title
   function showImages () {
-    //console.log(`currentIndex`);
     var str  = ` <li><a href="#"><img src=${images[currentIndex].url}></a><a href="#" class='title'>${images[currentIndex].name}</a></li>`
 
     var slide1_img = document.querySelector('.picture');
@@ -136,47 +135,50 @@ for(var i=0;i<5;i++){
 //小圆点   on，ready，‘’  分别对应鼠标的  点击/currentIndex,悬浮,不显示  三种状态
   var trig_li=trig.querySelectorAll('li');
   trig_li.forEach((e,index)=>{
-    e.onmouseover=function(){//鼠标悬浮
+    e.onmouseover=function(){//鼠标悬浮，且不是currentIndex小圆点
     if(this.className!='on')
-      //console.log(currentIndex);
     this.className='ready';
-    console.log(this.class);
   }
   e.onmouseout=function(){//鼠标离开，若不是currentIndex小圆点，则恢复原样
     if(this.className!='on')
     this.className='hide';
   }
-  e.onclick=function(){//点击选中当前小圆点
-    trig_li[currentIndex].className='hide';
+  e.onclick=function(){//点击小圆点
+    trig_li[currentIndex].className='hide';//当前小圆点隐藏
     currentIndex=index;
     showImages();
     showTrig();
   }
   })
-
+//显示小圆点
 function showTrig(){
-  trig_li.forEach((e,index)=>{//currentIndex圆点高亮
-     if(currentIndex==index) e.className='on';
+  trig_li.forEach((e,index)=>{
+     if(currentIndex==index) e.className='on';//currentIndex圆点高亮
      if((currentIndex+4)%5==index) e.className='hide';//currentIndex前一个圆点恢复
     })
 }
+
+//页面初始化
 showImages();
 showTrig();
 
+//轮播
 var time;
 function showtime(){
   time=setInterval(() => {
-    showImages();
-    showTrig();
     currentIndex += 1;
     if (currentIndex >= images.length) {
       currentIndex = 0;
     }
+    showImages();
+    showTrig();
+    
   }, 3000); 
   }
 
 showtime();
 
+//鼠标悬浮/离开图片
 var ele=document.getElementById("slide1");
   ele.onmouseover=function(){
     clearInterval(time);
