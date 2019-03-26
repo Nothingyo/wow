@@ -21,7 +21,7 @@
     #slide1 , #slide2{
       display: inline-block;
     }
-    #slide1,#slide1 img,#slide1 ul{
+    #slide1,#slide1 img,#slide1 ul,#slide1 li{
       position: absolute;
       z-index: 1;
       width:440px;
@@ -32,20 +32,14 @@
       position:absolute;
       bottom: 0;
       left:0;
-      width: 100%;
-      height: 35px;
-     
-    }
-    #slide1 .title a{
-      position: relative;
       padding-left: 10px;
-      top: 9px;
-      z-index:-1;
-      width:280px;
-      color: #fff;
+      width: 100%;
+      height: 25px;
       font-size: 14px;
+      color:#fff;
       text-decoration: none;
     }
+
     #slide1 .trig{
       position: absolute;
       z-index: 3;
@@ -54,10 +48,11 @@
       height: 22px;
       width: 130px;
     }
-    .trig li,#slide1 .trig li img{
+    #slide1 .trig li,#slide1 .trig li img{
       display: inline-block;
-      width:18px;
-      height: 18px;
+      width:25px;
+      height: 25px;
+      position:relative;
     }
     #slide2{
       width:540px;
@@ -90,77 +85,93 @@
   let currentIndex = 0;
   const images = [
     {
-      url: 'picture/1.jpg',
+      url: 'picture/1.jpg',name:'挑战第一次，不试你怎么知道？'
     },
     {
-      url: 'picture/2.jpg',
+      url: 'picture/2.jpg',name:'疑案追声'
     },
     {
-      url: 'picture/3.jpg',
+      url: 'picture/3.jpg',name:'考研冲鸭！'
     },
     {
-      url: 'picture/4.jpg',
+      url: 'picture/4.jpg',name:'舞蹈'
     },
     {
-      url: 'picture/5.jpg',
+      url: 'picture/5.jpg',name:'爱是孤独的开始'
     }
   ]
 
-  var str1='<ul class="picture"></ul><ul class="title"></ul><ul class="trig"></ul>';
+  var str1='<ul class="picture"></ul><ul class="trig"></ul>';
   var slide1=document.querySelector("#slide1");
   slide1.innerHTML=str1;
 
 
   function showImages () {
     //console.log(`currentIndex`);
-    var str  = ` <li><a href="#"><img src=${images[currentIndex].url}></a></li>`;
+    var str  = ` <li><a href="#"><img src=${images[currentIndex].url}></a><a href="#" class='title'>${images[currentIndex].name}</a></li>`
 
     var slide1_img = document.querySelector('.picture');
     slide1_img.innerHTML = str;
   }
 
-  const title=[
-  {name:'挑战第一次，不试你怎么知道？'},
-  {name:'疑案追声'},
-  {name:'考研冲鸭！'},
-  {name:'舞蹈'},
-  {name:'爱是孤独的开始'}
-]
 
-  function showTitles(){
-    var str='<a href="#">'+title[currentIndex].name+'</a>';
-    var slide1_title=document.querySelector('.title');
-    slide1_title.innerHTML=str;
-  }
-
-
+var trig=document.querySelector('.trig');
 for(var i=0;i<5;i++){
-  var trig=document.querySelector('.trig');
   var li=document.createElement('li');
-  li.innerHTML="<img src='picture/cm_2.png' style='height:18px ,width:18px'>";
+  li.innerHTML="<a href='#'><img src='picture/trig0.png' style='height:18px ,width:18px'></a>";
+  li.class='';
   trig.appendChild(li);
 }
 
-function wd(x,y){
-  this.style.height=y+'px';
-  this.style.width=x+'px';
+for(var i=0;i<5;i++){
+  var trig_li=document.querySelector('.trig').children[i];
+  trig_li.onmouseover=function(){
+    if(trig_li.class!='on')
+    trig_li.class='ready';
+    showTrig();
+    //console.log(trig_li.class);
+  }
+  trig_li.onmouseout=function(){
+    if(trig_li.class!='on')
+    trig_li.class='';
+    showTrig();
+    console.log(trig_li.class);
+  }
+  trig_li.onclick=function(){
+    var cur_li=document.querySelector('.trig').children;
+    cur_li[currentIndex].class='';
+    currentIndex=trigs[i].index;
+    showImages();
+  }
+  //console.log(trig_li.class);
 }
+
+
+
 function showTrig(){
-  var cur_li=document.getElementsByClassName('trig').children;
-  console.log(cur_li);
-  //cur_li[currentIndex].wd(21,21);
-  //cur_li[currentIndex].children[0].wd(21,21);
+  var cur_li=document.querySelector('.trig').children;
+  //console.log(cur_li);
+  cur_li[currentIndex].class='on';
+  cur_li[(currentIndex+4)%5].class='';
+
+  for(var i=0;i<cur_li.length;i++){
+    if(cur_li[i].class=='on'){
+      cur_li[i].innerHTML="<a href='#'><img src='picture/trig2.png' style='height:18px ,width:18px'></a>";
+    }else if(cur_li[i].class=='ready'){
+      cur_li[i].innerHTML="<a href='#'><img src='picture/trig1.png' style='height:18px ,width:18px'></a>";
+    }else{
+      cur_li[i].innerHTML="<a href='#'><img src='picture/trig0.png' style='height:18px ,width:18px'><a/>";
+    }
+  }
 }
 
 showImages();
-showTitles();
 showTrig();
 
 var time;
 function showtime(){
   time=setInterval(() => {
     showImages();
-    showTitles();
     showTrig();
     currentIndex += 1;
     if (currentIndex >= images.length) {
@@ -173,12 +184,11 @@ showtime();
 
 var ele=document.getElementById("slide1");
   ele.onmouseover=function(){
-    clearInterval(time);console.log("onmouseover");
+    clearInterval(time);
   }
   ele.onmouseout=function(){
     showtime();
   }
-
 
  </script>
 </html>
