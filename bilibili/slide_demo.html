@@ -48,11 +48,20 @@
       height: 22px;
       width: 130px;
     }
-    #slide1 .trig li,#slide1 .trig li img{
+    #slide1 .trig li,#slide1 .trig li a{
       display: inline-block;
       width:25px;
       height: 25px;
       position:relative;
+    }
+    .hide{
+      background: url('picture/trig0.png');
+    }
+    .ready{
+     background: url('picture/trig1.png');
+    }
+    .on{
+      background: url('picture/trig2.png');
     }
     #slide2{
       width:540px;
@@ -85,22 +94,22 @@
   let currentIndex = 0;
   const images = [
     {
-      url: 'picture/1.jpg',name:'挑战第一次，不试你怎么知道？'
+      url: 'picture/1.jpg',name:'挑战第一次，不试你怎么知道？',trig:'picture/trig0.png'
     },
     {
-      url: 'picture/2.jpg',name:'疑案追声'
+      url: 'picture/2.jpg',name:'疑案追声',trig:'picture/trig0.png'
     },
     {
-      url: 'picture/3.jpg',name:'考研冲鸭！'
+      url: 'picture/3.jpg',name:'考研冲鸭！',trig:'picture/trig0.png'
     },
     {
-      url: 'picture/4.jpg',name:'舞蹈'
+      url: 'picture/4.jpg',name:'舞蹈',trig:'picture/trig0.png'
     },
     {
-      url: 'picture/5.jpg',name:'爱是孤独的开始'
+      url: 'picture/5.jpg',name:'爱是孤独的开始',trig:'picture/trig0.png'
     }
   ]
-
+  //
   var str1='<ul class="picture"></ul><ul class="trig"></ul>';
   var slide1=document.querySelector("#slide1");
   slide1.innerHTML=str1;
@@ -114,54 +123,43 @@
     slide1_img.innerHTML = str;
   }
 
-
+//创建显示小圆点的节点li
 var trig=document.querySelector('.trig');
 for(var i=0;i<5;i++){
   var li=document.createElement('li');
-  li.innerHTML="<a href='#'><img src='picture/trig0.png' style='height:18px ,width:18px'></a>";
-  li.class='';
+  var a=document.createElement('a');
+  li.className='hide';
+  li.appendChild(a);
   trig.appendChild(li);
 }
 
-
-for(var i=0;i<5;i++){
-  var trig_li=trig.children[i];
-  trig_li.onmouseover=function(){
-    if(this.class!='on')
-    this.class='ready';
-    showTrig();
+//小圆点   on，ready，‘’  分别对应鼠标的  点击/currentIndex,悬浮,不显示  三种状态
+  var trig_li=trig.querySelectorAll('li');
+  trig_li.forEach((e,index)=>{
+    e.onmouseover=function(){//鼠标悬浮
+    if(this.className!='on')
+      //console.log(currentIndex);
+    this.className='ready';
     console.log(this.class);
   }
-  trig_li.onmouseout=function(){
-    if(this.class!='on')
-    this.class='';
-    showTrig();
-    console.log(this.class+"out!!!");
+  e.onmouseout=function(){//鼠标离开，若不是currentIndex小圆点，则恢复原样
+    if(this.className!='on')
+    this.className='hide';
   }
- 
-  //console.log(trig_li.class);
-}
-
-
+  e.onclick=function(){//点击选中当前小圆点
+    trig_li[currentIndex].className='hide';
+    currentIndex=index;
+    showImages();
+    showTrig();
+  }
+  })
 
 function showTrig(){
-  var cur_li=document.querySelector('.trig').children;
-  
-  cur_li[currentIndex].class='on';
-  if(cur_li[(currentIndex+4)%5].class!='ready')
-  cur_li[(currentIndex+4)%5].class='';
-
-  for(var i=0;i<cur_li.length;i++){
-    if(cur_li[i].class=='on'){
-      cur_li[i].innerHTML="<a href='#'><img src='picture/trig2.png' style='height:18px ,width:18px'></a>";
-    }else if(cur_li[i].class=='ready'){
-      cur_li[i].innerHTML="<a href='#'><img src='picture/trig1.png' style='height:18px ,width:18px'></a>";
-    }else{
-      cur_li[i].innerHTML="<a href='#'><img src='picture/trig0.png' style='height:18px ,width:18px'><a/>";
-    }
-  }
+  trig_li.forEach((e,index)=>{//currentIndex圆点高亮
+     if(currentIndex==index) e.className='on';
+     if((currentIndex+4)%5==index) e.className='hide';//currentIndex前一个圆点恢复
+    })
 }
-
 showImages();
 showTrig();
 
@@ -174,7 +172,7 @@ function showtime(){
     if (currentIndex >= images.length) {
       currentIndex = 0;
     }
-  }, 2000); 
+  }, 3000); 
   }
 
 showtime();
@@ -184,6 +182,7 @@ var ele=document.getElementById("slide1");
     clearInterval(time);
   }
   ele.onmouseout=function(){
+
     showtime();
   }
 
