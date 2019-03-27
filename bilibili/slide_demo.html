@@ -15,6 +15,7 @@
       position:relative;
     }
     #slide{
+      z-index: 1;
       width:980px;
       height:220px;
     }
@@ -23,7 +24,6 @@
     }
     #slide1,#slide1 img,#slide1 ul,#slide1 li{
       position: absolute;
-      z-index: 1;
       width:440px;
       height:220px;
     }
@@ -53,6 +53,21 @@
       width:25px;
       height: 25px;
     }
+    .more{
+      position: absolute;
+      width: 50px;
+      height: 24px;
+      right: 15px;
+      bottom: 35px;
+      color: #fff;
+      background: rgba(0,0,0,.64);
+      border-radius: 4px;
+      text-decoration: none;
+      text-align: center;
+      display: none;
+      font-size: 14px;
+      line-height: 24px;
+    }
     .hide{
       background: url('picture/trig0.png');
     }
@@ -63,6 +78,8 @@
       background: url('picture/trig2.png');
     }
     #slide2{
+      position:relative;
+      left: 440px;
       width:540px;
       height:220px;
     }
@@ -115,7 +132,7 @@
 
 //显示图片和title
   function showImages () {
-    var str  = ` <li><a href="#"><img src=${images[currentIndex].url}></a><a href="#" class='title'>${images[currentIndex].name}</a></li>`
+    var str  = ` <li><a href="#"><img src=${images[currentIndex].url}></a><a href="#" class='title'>${images[currentIndex].name}</a><a href="#" class='more'>更多><a></li>`
 
     var slide1_img = document.querySelector('.picture');
     slide1_img.innerHTML = str;
@@ -179,11 +196,16 @@ showtime();
 
 //鼠标悬浮/离开图片
 var ele=document.getElementById("slide1");
+
   ele.onmouseover=function(){
+    var more=document.querySelector('.more');
     clearInterval(time);
+    more.style.display='inline-block';
   }
   ele.onmouseout=function(){
+    var more=document.querySelector('.more');
     showtime();
+    more.style.display='none';
   }
 
  </script>
