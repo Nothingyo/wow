@@ -48,11 +48,10 @@
       height: 22px;
       width: 130px;
     }
-    #slide1 .trig li,#slide1 .trig li a{
+    #slide1 .trig span,#slide1 .trig span a{
       display: inline-block;
       width:25px;
       height: 25px;
-      position:relative;
     }
     .hide{
       background: url('picture/trig0.png');
@@ -122,19 +121,19 @@
     slide1_img.innerHTML = str;
   }
 
-//创建显示小圆点的节点li
+//创建显示小圆点的节点span
 var trig=document.querySelector('.trig');
 for(var i=0;i<5;i++){
-  var li=document.createElement('li');
+  var span=document.createElement('span');
   var a=document.createElement('a');
-  li.className='hide';
-  li.appendChild(a);
-  trig.appendChild(li);
+  span.className='hide';
+  span.appendChild(a);
+  trig.appendChild(span);
 }
 
 //小圆点   on，ready，‘’  分别对应鼠标的  点击/currentIndex,悬浮,不显示  三种状态
-  var trig_li=trig.querySelectorAll('li');
-  trig_li.forEach((e,index)=>{
+  var trig_span=trig.querySelectorAll('span');
+  trig_span.forEach((e,index)=>{
     e.onmouseover=function(){//鼠标悬浮，且不是currentIndex小圆点
     if(this.className!='on')
     this.className='ready';
@@ -144,7 +143,7 @@ for(var i=0;i<5;i++){
     this.className='hide';
   }
   e.onclick=function(){//点击小圆点
-    trig_li[currentIndex].className='hide';//当前小圆点隐藏
+    trig_span[currentIndex].className='hide';//currentIndex小圆点隐藏
     currentIndex=index;
     showImages();
     showTrig();
@@ -152,7 +151,7 @@ for(var i=0;i<5;i++){
   })
 //显示小圆点
 function showTrig(){
-  trig_li.forEach((e,index)=>{
+  trig_span.forEach((e,index)=>{
      if(currentIndex==index) e.className='on';//currentIndex圆点高亮
      if((currentIndex+4)%5==index) e.className='hide';//currentIndex前一个圆点恢复
     })
@@ -184,7 +183,6 @@ var ele=document.getElementById("slide1");
     clearInterval(time);
   }
   ele.onmouseout=function(){
-
     showtime();
   }
 
