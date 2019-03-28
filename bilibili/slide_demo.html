@@ -16,7 +16,7 @@
     }
     #slide{
       z-index: 1;
-      width:980px;
+      width:1020px;
       height:220px;
     }
     #slide1 , #slide2{
@@ -80,9 +80,49 @@
     #slide2{
       position:relative;
       left: 440px;
-      width:540px;
+      width:560px;
       height:220px;
+      padding-left: 20px;
     }
+    .slide2_images{
+      display: inline-block;
+      width: 140px;
+      height: 100px;
+      margin-bottom: 10px;
+      overflow: hidden;
+    }
+    .slide2_images a,.slide2_images img,.slide2_images div{
+      width: 126px;
+      height: 99px;
+      border-radius: 4px;
+      color: #fff;
+    } 
+    .slide2_hide a{
+      text-decoration: none;
+    }
+    .slide2_hide{
+      text-align: center;
+      transform: translateY(-18px);
+      font-size: 12px;
+    }
+    .slide2_show{
+      text-align: center;
+      transform: translateY(-100px);
+      font-size: 12px;
+      background-color: rgba(0,0,0,.64);
+      padding-top: 12px;
+    }
+    .slide2_show a{
+      text-decoration: none;
+    }
+    .slide2_images .slide2_clock{
+      position: absolute;
+      right:8px;
+      bottom: 15px;
+      width: 25px;
+      height: 25px;
+    }
+
     
     </style>
 </head>
@@ -95,7 +135,9 @@
           <div id="slide1">
 
           </div>
-          <div id="slide2"></div>
+          <div id="slide2">
+
+          </div>
         </div>
       </div>
 
@@ -138,15 +180,24 @@
     slide1_img.innerHTML = str;
   }
 
+//创建节点函数,返回新创建的节点
+function createnodes(t,f,i,name){//t,f,i,name分别为类型，父节点，id/class，对应名字
+  var t=document.createElement(t);
+  var f=document.querySelector(f);
+  console.log(f);
+  if(i=='id') t.id=name;
+  else if(i=='class') t.className=name;
+  f.appendChild(t);
+  return t;
+}
+
 //创建显示小圆点的节点span
 var trig=document.querySelector('.trig');
 for(var i=0;i<5;i++){
-  var span=document.createElement('span');
-  var a=document.createElement('a');
-  span.className='hide';
-  span.appendChild(a);
-  trig.appendChild(span);
+  createnodes('span','.trig','class','hide');
 }
+
+
 
 //小圆点   on，ready，‘’  分别对应鼠标的  点击/currentIndex,悬浮,不显示  三种状态
   var trig_span=trig.querySelectorAll('span');
@@ -207,6 +258,41 @@ var ele=document.getElementById("slide1");
     showtime();
     more.style.display='none';
   }
+
+
+//slide2图片存储
+const slide2_Images=[
+  {url:'picture/slide2_0.jpg',name:'状元'},
+  {url:'picture/slide2_1.jpg',name:'榜眼'},
+  {url:'picture/slide2_2.jpg',name:'探花'},
+  {url:'picture/slide2_3.jpg',name:'如此丧心病狂的作者你可见过？情侣全悲剧！单身狗必看！'},
+  {url:'picture/slide2_4.jpg',name:'进士出身'},
+  {url:'picture/slide2_5.jpg',name:'同进士出身'},
+  {url:'picture/slide2_6.jpg',name:'传胪'},
+  {url:'picture/slide2_7.jpg',name:'wowowowwowow'}
+  
+]
+
+
+  //创建slide2的8个显示框，创建节点函数见143行
+  //超过显示框的部分用overflow:hidden隐藏
+  for(var i=0;i<8;i++){
+    var div=createnodes('div','#slide2','class','slide2_images');//slide2的子节点，classname='slide2_images'
+    div.innerHTML='<a href="#"><img src="'+slide2_Images[i].url+'"></a><div class="slide2_hide" ><a href="#" >'+slide2_Images[i].name+'</a><a href="#" title="稍后再看"><img class="slide2_clock" src="picture/slide2_clock.png"></a></div>';
+  }
+
+
+  //鼠标悬停，弹出详细内容
+  var slide2_images=document.querySelectorAll('.slide2_images');
+   var slide2_hide=document.querySelectorAll('.slide2_hide');
+  slide2_images.forEach((e,index)=>{
+    e.onmouseover=function(){
+      slide2_hide[index].className='slide2_show';//css用transform:translateY(-100px);实现
+    }
+    e.onmouseout=function(){
+      slide2_hide[index].className='slide2_hide';
+    }
+  })
 
  </script>
 </html>
