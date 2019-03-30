@@ -21,6 +21,27 @@
         height: 170px;
         position: relative;
     }
+    #sider {
+        position: fixed;
+        top: 10px;
+        right: 10px;
+        width: 60px;
+        background-color: #f6f9fa;
+        text-align: center;
+        padding-top: 10px;
+        padding-bottom: 10px;
+        border-radius: 4px;
+        border: solid #B8B8B8;
+    }
+    #sider div {
+        color: #000;
+        cursor: pointer;
+        height: 25px;
+        line-height: 23px;
+    }
+    .sider_item:hover {
+        background-color: 33CCFF;
+    }
     #slide {
         z-index: 1;
         width: 1020px;
@@ -163,175 +184,8 @@
         <div id="sider"></div>
     </div>
 </body>
-<script>
-let currentIndex = 0;
-const images = [{
-        url: 'picture/1.jpg',
-        name: '挑战第一次，不试你怎么知道？'
-    },
-    {
-        url: 'picture/2.jpg',
-        name: '疑案追声'
-    },
-    {
-        url: 'picture/3.jpg',
-        name: '考研冲鸭！'
-    },
-    {
-        url: 'picture/4.jpg',
-        name: '舞蹈'
-    },
-    {
-        url: 'picture/5.jpg',
-        name: '爱是孤独的开始'
-    }
-]
-
-var slide1 = document.querySelector("#slide1");
-var slide2 = document.querySelector('#slide2');
-var time;
-
-//显示图片、title和链接模块
-function showImages() {
-    var slide1_img = document.querySelector('.picture');
-    var str = ` 
-      <li>
-        <a href="#">
-         <img src=${images[currentIndex].url}>
-        </a>
-        <a href="#" class="title">${images[currentIndex].name}</a>
-        <a href="#" class="more">更多></a>
-      </li>
-      `
-    slide1_img.innerHTML = str;
-
-    //鼠标悬浮图片,轮播停止，显示.more链接模块；鼠标离开，轮播继续，隐藏.more链接模块
-    slide1.onmouseover = function() {
-        var more = document.querySelector('.more');
-        clearInterval(time);
-        more.style.display = 'inline-block';
-    }
-    slide1.onmouseout = function() {
-        var more = document.querySelector('.more');
-        showtime();
-        more.style.display = 'none';
-    }
-}
-//显示小圆点,currentIndex圆点高亮,currentIndex前一个圆点恢复
-function showTrig() {
-    trig_span.forEach((e, index) => {
-        if (currentIndex == index) {
-            e.className = 'on';
-        }
-        if ((currentIndex + 4) % 5 == index) {
-            e.className = 'hide';
-        }
-    })
-}
-//小圆点   on，ready，hide  分别对应鼠标的  点击/currentIndex,悬浮,不显示  三种状态
-var trig_span = document.querySelectorAll('span');
-trig_span.forEach((e, index) => {
-    e.onmouseover = function() {
-        //鼠标悬浮，且不是currentIndex小圆点
-        if (this.className != 'on') {
-            this.className = 'ready';
-        }
-    }
-    e.onmouseout = function() {
-        //鼠标离开，若不是currentIndex小圆点，则恢复原样
-        if (this.className != 'on') {
-            this.className = 'hide';
-        }
-    }
-    e.onclick = function() {
-        trig_span[currentIndex].className = 'hide';
-        currentIndex = index;
-        showImages();
-        showTrig();
-    }
-})
-
-//slide2图片存储
-const slide2_Images = [{
-        url: 'picture/slide2_0.jpg',
-        name: '状元'
-    },
-    {
-        url: 'picture/slide2_1.jpg',
-        name: '榜眼'
-    },
-    {
-        url: 'picture/slide2_2.jpg',
-        name: '探花'
-    },
-    {
-        url: 'picture/slide2_3.jpg',
-        name: '如此丧心病狂的作者你可见过？情侣全悲剧！单身狗必看！'
-    },
-    {
-        url: 'picture/slide2_4.jpg',
-        name: '进士出身'
-    },
-    {
-        url: 'picture/slide2_5.jpg',
-        name: '同进士出身'
-    },
-    {
-        url: 'picture/slide2_6.jpg',
-        name: '传胪'
-    },
-    {
-        url: 'picture/slide2_7.jpg',
-        name: 'wowowowwowow'
-    }
-]
-//创建slide2的8个显示框，超过显示框的部分用overflow:hidden隐藏
-function showSlide2() {
-    var slide2_images = document.querySelectorAll('.slide2_images');
-    for (var i = 0; i < 8; i++) {
-        const html = `
-        <a href="#">
-          <img src="${slide2_Images[i].url}">
-        </a>
-        <div class="slide2_hide" >
-         <a href="#" >${slide2_Images[i].name}</a>
-         <a href="#" title="稍后再看">
-           <img class="slide2_clock" src="picture/slide2_clock.png">
-         </a>
-        </div>
-    `
-        slide2_images[i].innerHTML = html;
-    }
-
-    //鼠标悬停，弹出详细内容,css用transform:translateY(-100px);实现
-    slide2_images.forEach((e, index) => {
-        var slide2_hide = document.querySelectorAll('.slide2_hide');
-        e.onmouseover = function() {
-            slide2_hide[index].className = 'slide2_show';
-        }
-        e.onmouseout = function() {
-            slide2_hide[index].className = 'slide2_hide';
-        }
-    })
-}
-
-//轮播
-function showTime() {
-    time = setInterval(() => {
-        currentIndex += 1;
-        if (currentIndex >= images.length) {
-            currentIndex = 0;
-        }
-        showImages();
-        showTrig();
-
-    }, 3000);
-}
-
-showImages();
-showTrig();
-showSlide2();
-showTime();
-</script>
+<script src="slide_showImgAndSpan.js"> </script>
+<script src="showSlide2.js"> </script>
+<script src="Sider.js"> </script>
 
 </html>
