@@ -10,6 +10,12 @@
         margin: 0px;
         padding: 0px;
         font-size: 12px;
+        color: #fff;
+    }
+    #main {
+        width: 1020px;
+        margin-left: auto;
+        margin-right: auto;
     }
     #header {
         height: 170px;
@@ -40,7 +46,6 @@
         padding-left: 10px;
         width: 100%;
         height: 25px;
-        color: #fff;
         text-decoration: none;
     }
     #slide1 .trig {
@@ -63,7 +68,6 @@
         height: 24px;
         right: 15px;
         bottom: 35px;
-        color: #fff;
         background: rgba(0, 0, 0, .64);
         border-radius: 4px;
         text-decoration: none;
@@ -101,7 +105,6 @@
         width: 126px;
         height: 99px;
         border-radius: 4px;
-        color: #fff;
     }
     .slide2_hide a {
         text-decoration: none;
@@ -157,6 +160,7 @@
             </div>
         </div>
         <div id="footer"></div>
+        <div id="sider"></div>
     </div>
 </body>
 <script>
@@ -187,7 +191,7 @@ var slide1 = document.querySelector("#slide1");
 var slide2 = document.querySelector('#slide2');
 var time;
 
-//创建图片、title和链接模块
+//显示图片、title和链接模块
 function showImages() {
     var slide1_img = document.querySelector('.picture');
     var str = ` 
@@ -200,20 +204,30 @@ function showImages() {
       </li>
       `
     slide1_img.innerHTML = str;
-}
 
-//鼠标悬浮图片,轮播停止，显示.more链接模块；鼠标离开，轮播继续，隐藏.more链接模块
-slide1.onmouseover = function() {
-    var more = document.querySelector('.more');
-    clearInterval(time);
-    more.style.display = 'inline-block';
+    //鼠标悬浮图片,轮播停止，显示.more链接模块；鼠标离开，轮播继续，隐藏.more链接模块
+    slide1.onmouseover = function() {
+        var more = document.querySelector('.more');
+        clearInterval(time);
+        more.style.display = 'inline-block';
+    }
+    slide1.onmouseout = function() {
+        var more = document.querySelector('.more');
+        showtime();
+        more.style.display = 'none';
+    }
 }
-slide1.onmouseout = function() {
-    var more = document.querySelector('.more');
-    showtime();
-    more.style.display = 'none';
+//显示小圆点,currentIndex圆点高亮,currentIndex前一个圆点恢复
+function showTrig() {
+    trig_span.forEach((e, index) => {
+        if (currentIndex == index) {
+            e.className = 'on';
+        }
+        if ((currentIndex + 4) % 5 == index) {
+            e.className = 'hide';
+        }
+    })
 }
-
 //小圆点   on，ready，hide  分别对应鼠标的  点击/currentIndex,悬浮,不显示  三种状态
 var trig_span = document.querySelectorAll('span');
 trig_span.forEach((e, index) => {
@@ -236,17 +250,6 @@ trig_span.forEach((e, index) => {
         showTrig();
     }
 })
-//显示小圆点,currentIndex圆点高亮,currentIndex前一个圆点恢复
-function showTrig() {
-    trig_span.forEach((e, index) => {
-        if (currentIndex == index) {
-            e.className = 'on';
-        }
-        if ((currentIndex + 4) % 5 == index) {
-            e.className = 'hide';
-        }
-    })
-}
 
 //slide2图片存储
 const slide2_Images = [{
@@ -283,9 +286,10 @@ const slide2_Images = [{
     }
 ]
 //创建slide2的8个显示框，超过显示框的部分用overflow:hidden隐藏
-var slide2_images = document.querySelectorAll('.slide2_images');
-for (var i = 0; i < 8; i++) {
-    const html = `
+function showSlide2() {
+    var slide2_images = document.querySelectorAll('.slide2_images');
+    for (var i = 0; i < 8; i++) {
+        const html = `
         <a href="#">
           <img src="${slide2_Images[i].url}">
         </a>
@@ -296,21 +300,23 @@ for (var i = 0; i < 8; i++) {
          </a>
         </div>
     `
-    slide2_images[i].innerHTML = html;
+        slide2_images[i].innerHTML = html;
+    }
+
+    //鼠标悬停，弹出详细内容,css用transform:translateY(-100px);实现
+    slide2_images.forEach((e, index) => {
+        var slide2_hide = document.querySelectorAll('.slide2_hide');
+        e.onmouseover = function() {
+            slide2_hide[index].className = 'slide2_show';
+        }
+        e.onmouseout = function() {
+            slide2_hide[index].className = 'slide2_hide';
+        }
+    })
 }
 
-//鼠标悬停，弹出详细内容,css用transform:translateY(-100px);实现
-slide2_images.forEach((e, index) => {
-    var slide2_hide = document.querySelectorAll('.slide2_hide');
-    e.onmouseover = function() {
-        slide2_hide[index].className = 'slide2_show';
-    }
-    e.onmouseout = function() {
-        slide2_hide[index].className = 'slide2_hide';
-    }
-})
 //轮播
-function showtime() {
+function showTime() {
     time = setInterval(() => {
         currentIndex += 1;
         if (currentIndex >= images.length) {
@@ -324,7 +330,8 @@ function showtime() {
 
 showImages();
 showTrig();
-showtime();
+showSlide2();
+showTime();
 </script>
 
 </html>
