@@ -1,298 +1,330 @@
 <html lang="en">
+
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta http-equiv="X-UA-Compatible" content="ie=edge">
-
-  <title>slide_demo</title>
-  <style>
-        *{
-            margin: 0px;
-            padding: 0px;
-        }
-    #header{
-      height:170px;
-      position:relative;
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>slide_demo</title>
+    <style>
+    * {
+        margin: 0px;
+        padding: 0px;
+        font-size: 12px;
     }
-    #slide{
-      z-index: 1;
-      width:1020px;
-      height:220px;
+    #header {
+        height: 170px;
+        position: relative;
     }
-    #slide1 , #slide2{
-      display: inline-block;
+    #slide {
+        z-index: 1;
+        width: 1020px;
+        height: 220px;
     }
-    #slide1,#slide1 img,#slide1 ul,#slide1 li{
-      position: absolute;
-      width:440px;
-      height:220px;
+    #slide1,
+    #slide2 {
+        display: inline-block;
     }
-    #slide1 .title{
-      z-index: 2;
-      position:absolute;
-      bottom: 0;
-      left:0;
-      padding-left: 10px;
-      width: 100%;
-      height: 25px;
-      font-size: 14px;
-      color:#fff;
-      text-decoration: none;
+    #slide1,
+    #slide1 img,
+    #slide1 ul,
+    #slide1 li {
+        position: absolute;
+        width: 440px;
+        height: 220px;
     }
-
-    #slide1 .trig{
-      position: absolute;
-      z-index: 3;
-      bottom: 6px;
-      right: 20px;
-      height: 22px;
-      width: 130px;
+    #slide1 .title {
+        z-index: 2;
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        padding-left: 10px;
+        width: 100%;
+        height: 25px;
+        color: #fff;
+        text-decoration: none;
     }
-    #slide1 .trig span,#slide1 .trig span a{
-      display: inline-block;
-      width:25px;
-      height: 25px;
+    #slide1 .trig {
+        position: absolute;
+        z-index: 3;
+        bottom: 6px;
+        right: 15px;
+        height: 25px;
+        width: 150px;
     }
-    .more{
-      position: absolute;
-      width: 50px;
-      height: 24px;
-      right: 15px;
-      bottom: 35px;
-      color: #fff;
-      background: rgba(0,0,0,.64);
-      border-radius: 4px;
-      text-decoration: none;
-      text-align: center;
-      display: none;
-      font-size: 14px;
-      line-height: 24px;
+    #slide1 .trig span,
+    #slide1 .trig span a {
+        display: inline-block;
+        width: 25px;
+        height: 25px;
     }
-    .hide{
-      background: url('picture/trig0.png');
+    .more {
+        position: absolute;
+        width: 50px;
+        height: 24px;
+        right: 15px;
+        bottom: 35px;
+        color: #fff;
+        background: rgba(0, 0, 0, .64);
+        border-radius: 4px;
+        text-decoration: none;
+        text-align: center;
+        display: none;
+        font-size: 14px;
+        line-height: 24px;
     }
-    .ready{
-     background: url('picture/trig1.png');
+    .hide {
+        background: url('picture/trig0.png');
     }
-    .on{
-      background: url('picture/trig2.png');
+    .ready {
+        background: url('picture/trig1.png');
     }
-    #slide2{
-      position:relative;
-      left: 440px;
-      width:560px;
-      height:220px;
-      padding-left: 20px;
+    .on {
+        background: url('picture/trig2.png');
     }
-    .slide2_images{
-      display: inline-block;
-      width: 140px;
-      height: 100px;
-      margin-bottom: 10px;
-      overflow: hidden;
+    #slide2 {
+        position: relative;
+        left: 440px;
+        width: 580px;
+        height: 220px;
+        padding-left: 20px;
     }
-    .slide2_images a,.slide2_images img,.slide2_images div{
-      width: 126px;
-      height: 99px;
-      border-radius: 4px;
-      color: #fff;
-    } 
-    .slide2_hide a{
-      text-decoration: none;
+    .slide2_images {
+        display: inline-block;
+        width: 140px;
+        height: 100px;
+        margin-bottom: 10px;
+        overflow: hidden;
     }
-    .slide2_hide{
-      text-align: center;
-      transform: translateY(-18px);
-      font-size: 12px;
+    .slide2_images a,
+    .slide2_images img,
+    .slide2_images div {
+        width: 126px;
+        height: 99px;
+        border-radius: 4px;
+        color: #fff;
     }
-    .slide2_show{
-      text-align: center;
-      transform: translateY(-100px);
-      font-size: 12px;
-      background-color: rgba(0,0,0,.64);
-      padding-top: 12px;
+    .slide2_hide a {
+        text-decoration: none;
     }
-    .slide2_show a{
-      text-decoration: none;
+    .slide2_hide {
+        text-align: center;
+        transform: translateY(-18px);
     }
-    .slide2_images .slide2_clock{
-      position: absolute;
-      right:8px;
-      bottom: 15px;
-      width: 25px;
-      height: 25px;
+    .slide2_show {
+        text-align: center;
+        transform: translateY(-100px);
+        background-color: rgba(0, 0, 0, .64);
+        padding-top: 12px;
     }
-
-    
+    .slide2_show a {
+        text-decoration: none;
+    }
+    .slide2_images .slide2_clock {
+        position: absolute;
+        right: 8px;
+        bottom: 15px;
+        width: 25px;
+        height: 25px;
+    }
     </style>
 </head>
+
 <body>
     <div id="all">
-      <div id="header"></div>
-
-      <div id="main">
-        <div id="slide">
-          <div id="slide1">
-
-          </div>
-          <div id="slide2">
-
-          </div>
+        <div id="header"></div>
+        <div id="main">
+            <div id="slide">
+                <div id="slide1">
+                    <ul class="picture"></ul>
+                    <ul class="trig">
+                        <span class="hide"></span>
+                        <span class="hide"></span>
+                        <span class="hide"></span>
+                        <span class="hide"></span>
+                        <span class="hide"></span>
+                    </ul>
+                </div>
+                <div id="slide2">
+                    <div class="slide2_images"></div>
+                    <div class="slide2_images"></div>
+                    <div class="slide2_images"></div>
+                    <div class="slide2_images"></div>
+                    <div class="slide2_images"></div>
+                    <div class="slide2_images"></div>
+                    <div class="slide2_images"></div>
+                    <div class="slide2_images"></div>
+                </div>
+            </div>
         </div>
-      </div>
-
-      <div id="footer"></div>
+        <div id="footer"></div>
     </div>
-
-
 </body>
-
- <script>
-
-  let currentIndex = 0;
-  const images = [
-    {
-      url: 'picture/1.jpg',name:'挑战第一次，不试你怎么知道？'
+<script>
+let currentIndex = 0;
+const images = [{
+        url: 'picture/1.jpg',
+        name: '挑战第一次，不试你怎么知道？'
     },
     {
-      url: 'picture/2.jpg',name:'疑案追声'
+        url: 'picture/2.jpg',
+        name: '疑案追声'
     },
     {
-      url: 'picture/3.jpg',name:'考研冲鸭！'
+        url: 'picture/3.jpg',
+        name: '考研冲鸭！'
     },
     {
-      url: 'picture/4.jpg',name:'舞蹈'
+        url: 'picture/4.jpg',
+        name: '舞蹈'
     },
     {
-      url: 'picture/5.jpg',name:'爱是孤独的开始'
+        url: 'picture/5.jpg',
+        name: '爱是孤独的开始'
     }
-  ]
-  //
-  var str1='<ul class="picture"></ul><ul class="trig"></ul>';
-  var slide1=document.querySelector("#slide1");
-  slide1.innerHTML=str1;
+]
 
-//显示图片和title
-  function showImages () {
-    var str  = ` <li><a href="#"><img src=${images[currentIndex].url}></a><a href="#" class='title'>${images[currentIndex].name}</a><a href="#" class='more'>更多><a></li>`
+var slide1 = document.querySelector("#slide1");
+var slide2 = document.querySelector('#slide2');
+var time;
 
+//创建图片、title和链接模块
+function showImages() {
     var slide1_img = document.querySelector('.picture');
+    var str = ` 
+      <li>
+        <a href="#">
+         <img src=${images[currentIndex].url}>
+        </a>
+        <a href="#" class="title">${images[currentIndex].name}</a>
+        <a href="#" class="more">更多></a>
+      </li>
+      `
     slide1_img.innerHTML = str;
-  }
-
-//创建节点函数,返回新创建的节点
-function createnodes(t,f,i,name){//t,f,i,name分别为类型，父节点，id/class，对应名字
-  var t=document.createElement(t);
-  var f=document.querySelector(f);
-  console.log(f);
-  if(i=='id') t.id=name;
-  else if(i=='class') t.className=name;
-  f.appendChild(t);
-  return t;
 }
 
-//创建显示小圆点的节点span
-var trig=document.querySelector('.trig');
-for(var i=0;i<5;i++){
-  createnodes('span','.trig','class','hide');
+//鼠标悬浮图片,轮播停止，显示.more链接模块；鼠标离开，轮播继续，隐藏.more链接模块
+slide1.onmouseover = function() {
+    var more = document.querySelector('.more');
+    clearInterval(time);
+    more.style.display = 'inline-block';
+}
+slide1.onmouseout = function() {
+    var more = document.querySelector('.more');
+    showtime();
+    more.style.display = 'none';
 }
 
-
-
-//小圆点   on，ready，‘’  分别对应鼠标的  点击/currentIndex,悬浮,不显示  三种状态
-  var trig_span=trig.querySelectorAll('span');
-  trig_span.forEach((e,index)=>{
-    e.onmouseover=function(){//鼠标悬浮，且不是currentIndex小圆点
-    if(this.className!='on')
-    this.className='ready';
-  }
-  e.onmouseout=function(){//鼠标离开，若不是currentIndex小圆点，则恢复原样
-    if(this.className!='on')
-    this.className='hide';
-  }
-  e.onclick=function(){//点击小圆点
-    trig_span[currentIndex].className='hide';//currentIndex小圆点隐藏
-    currentIndex=index;
-    showImages();
-    showTrig();
-  }
-  })
-//显示小圆点
-function showTrig(){
-  trig_span.forEach((e,index)=>{
-     if(currentIndex==index) e.className='on';//currentIndex圆点高亮
-     if((currentIndex+4)%5==index) e.className='hide';//currentIndex前一个圆点恢复
+//小圆点   on，ready，hide  分别对应鼠标的  点击/currentIndex,悬浮,不显示  三种状态
+var trig_span = document.querySelectorAll('span');
+trig_span.forEach((e, index) => {
+    e.onmouseover = function() {
+        //鼠标悬浮，且不是currentIndex小圆点
+        if (this.className != 'on') {
+            this.className = 'ready';
+        }
+    }
+    e.onmouseout = function() {
+        //鼠标离开，若不是currentIndex小圆点，则恢复原样
+        if (this.className != 'on') {
+            this.className = 'hide';
+        }
+    }
+    e.onclick = function() {
+        trig_span[currentIndex].className = 'hide';
+        currentIndex = index;
+        showImages();
+        showTrig();
+    }
+})
+//显示小圆点,currentIndex圆点高亮,currentIndex前一个圆点恢复
+function showTrig() {
+    trig_span.forEach((e, index) => {
+        if (currentIndex == index) {
+            e.className = 'on';
+        }
+        if ((currentIndex + 4) % 5 == index) {
+            e.className = 'hide';
+        }
     })
 }
 
-//页面初始化
+//slide2图片存储
+const slide2_Images = [{
+        url: 'picture/slide2_0.jpg',
+        name: '状元'
+    },
+    {
+        url: 'picture/slide2_1.jpg',
+        name: '榜眼'
+    },
+    {
+        url: 'picture/slide2_2.jpg',
+        name: '探花'
+    },
+    {
+        url: 'picture/slide2_3.jpg',
+        name: '如此丧心病狂的作者你可见过？情侣全悲剧！单身狗必看！'
+    },
+    {
+        url: 'picture/slide2_4.jpg',
+        name: '进士出身'
+    },
+    {
+        url: 'picture/slide2_5.jpg',
+        name: '同进士出身'
+    },
+    {
+        url: 'picture/slide2_6.jpg',
+        name: '传胪'
+    },
+    {
+        url: 'picture/slide2_7.jpg',
+        name: 'wowowowwowow'
+    }
+]
+//创建slide2的8个显示框，超过显示框的部分用overflow:hidden隐藏
+var slide2_images = document.querySelectorAll('.slide2_images');
+for (var i = 0; i < 8; i++) {
+    const html = `
+        <a href="#">
+          <img src="${slide2_Images[i].url}">
+        </a>
+        <div class="slide2_hide" >
+         <a href="#" >${slide2_Images[i].name}</a>
+         <a href="#" title="稍后再看">
+           <img class="slide2_clock" src="picture/slide2_clock.png">
+         </a>
+        </div>
+    `
+    slide2_images[i].innerHTML = html;
+}
+
+//鼠标悬停，弹出详细内容,css用transform:translateY(-100px);实现
+slide2_images.forEach((e, index) => {
+    var slide2_hide = document.querySelectorAll('.slide2_hide');
+    e.onmouseover = function() {
+        slide2_hide[index].className = 'slide2_show';
+    }
+    e.onmouseout = function() {
+        slide2_hide[index].className = 'slide2_hide';
+    }
+})
+//轮播
+function showtime() {
+    time = setInterval(() => {
+        currentIndex += 1;
+        if (currentIndex >= images.length) {
+            currentIndex = 0;
+        }
+        showImages();
+        showTrig();
+
+    }, 3000);
+}
+
 showImages();
 showTrig();
-
-//轮播
-var time;
-function showtime(){
-  time=setInterval(() => {
-    currentIndex += 1;
-    if (currentIndex >= images.length) {
-      currentIndex = 0;
-    }
-    showImages();
-    showTrig();
-    
-  }, 3000); 
-  }
-
 showtime();
+</script>
 
-//鼠标悬浮/离开图片
-var ele=document.getElementById("slide1");
-
-  ele.onmouseover=function(){
-    var more=document.querySelector('.more');
-    clearInterval(time);
-    more.style.display='inline-block';
-  }
-  ele.onmouseout=function(){
-    var more=document.querySelector('.more');
-    showtime();
-    more.style.display='none';
-  }
-
-
-//slide2图片存储
-const slide2_Images=[
-  {url:'picture/slide2_0.jpg',name:'状元'},
-  {url:'picture/slide2_1.jpg',name:'榜眼'},
-  {url:'picture/slide2_2.jpg',name:'探花'},
-  {url:'picture/slide2_3.jpg',name:'如此丧心病狂的作者你可见过？情侣全悲剧！单身狗必看！'},
-  {url:'picture/slide2_4.jpg',name:'进士出身'},
-  {url:'picture/slide2_5.jpg',name:'同进士出身'},
-  {url:'picture/slide2_6.jpg',name:'传胪'},
-  {url:'picture/slide2_7.jpg',name:'wowowowwowow'}
-  
-]
-
-
-  //创建slide2的8个显示框，创建节点函数见143行
-  //超过显示框的部分用overflow:hidden隐藏
-  for(var i=0;i<8;i++){
-    var div=createnodes('div','#slide2','class','slide2_images');//slide2的子节点，classname='slide2_images'
-    div.innerHTML='<a href="#"><img src="'+slide2_Images[i].url+'"></a><div class="slide2_hide" ><a href="#" >'+slide2_Images[i].name+'</a><a href="#" title="稍后再看"><img class="slide2_clock" src="picture/slide2_clock.png"></a></div>';
-  }
-
-
-  //鼠标悬停，弹出详细内容
-  var slide2_images=document.querySelectorAll('.slide2_images');
-   var slide2_hide=document.querySelectorAll('.slide2_hide');
-  slide2_images.forEach((e,index)=>{
-    e.onmouseover=function(){
-      slide2_hide[index].className='slide2_show';//css用transform:translateY(-100px);实现
-    }
-    e.onmouseout=function(){
-      slide2_hide[index].className='slide2_hide';
-    }
-  })
-
- </script>
 </html>
