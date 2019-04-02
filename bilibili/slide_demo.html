@@ -144,7 +144,7 @@
     .slide2_show a {
         text-decoration: none;
     }
-    .slide2_images .slide2_clock,.animate_content_item_show .animate_clock{
+    .slide2_images .slide2_clock,.animate_content_item_show .animate_clock,.animate_content_item_hide .animate_clock{
         position: absolute;
         right: 8px;
         bottom: 20px;
@@ -229,14 +229,13 @@
     .animate_content_item{
         display: inline-block;
         width: 160px;
-        height: 100px;
-        margin-bottom: 10px;
+        height: 130px;
         margin-left: 10px;
         overflow: hidden;
     }
     .animate_content_item div,.animate_content_item a,.animate_content_item img{
         width: 160px;
-        height: 110px;
+        height: 100px;
         border-radius: 4px;
     }
     .animate_content_item_show{
@@ -248,7 +247,22 @@
     .animate_content_item_hide{
             transform: translateY(-25px);
     }
-
+    .animate_content_images{
+        position: relative;
+    }
+ .animate_content_item .PlayAndDanmarku{
+    position: absolute;
+    top:116px;
+    z-index: 4;
+    width: 160px;
+    height: 20px;
+    background-color: #fff;
+}
+.PlayAndDanmarku img{
+    height: 15px;
+    width: 15px;
+    float: left;
+}
 
     </style>
 </head>

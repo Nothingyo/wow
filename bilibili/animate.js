@@ -1,69 +1,86 @@
 const animate_images = [{
         url: 'picture/animate_0.jpg',
-        time: '09:08'
+        time: '09:08',
+        text:'这是简介这是简介这是简介这是简介这是简介这是简介'
     },
     {
         url: 'picture/animate_1.jpg',
-        time: '04:48'
+        time: '04:48',
+        text:'这是简介这是简介这是简介这是简介这是简介这是简介'
     },
     {
         url: 'picture/animate_2.jpg',
-        time: '05:22'
+        time: '05:22',
+        text:'这是简介这是简介这是简介这是简介这是简介这是简介'
     },
     {
         url: 'picture/animate_3.jpg',
-        time: '23:01'
+        time: '23:01',
+        text:'这是简介这是简介这是简介这是简介这是简介这是简介'
     },
     {
         url: 'picture/animate_4.jpg',
-        time: '20:41'
+        time: '20:41',
+        text:'这是简介这是简介这是简介这是简介这是简介这是简介'
     },
     {
         url: 'picture/animate_5.jpg',
-        time: '02:22'
+        time: '02:22',
+        text:'这是简介这是简介这是简介这是简介这是简介这是简介'
     },
 
     {
         url: 'picture/animate_6.jpg',
-        time: '06:52'
+        time: '06:52',
+        text:'这是简介这是简介这是简介这是简介这是简介这是简介'
     },
     {
         url: 'picture/animate_7.jpg',
-        time: '12:57'
+        time: '12:57',
+        text:'这是简介这是简介这是简介这是简介这是简介这是简介'
     },
     {
         url: 'picture/animate_8.jpg',
-        time: '09:08'
+        time: '09:08',
+        text:'这是简介这是简介这是简介这是简介这是简介这是简介'
     },
     {
         url: 'picture/animate_9.jpg',
-        time: '09:08'
+        time: '09:08',
+        text:'这是简介这是简介这是简介这是简介这是简介这是简介'
     },
     {
         url: 'picture/animate_10.jpg',
-        time: '09:08'
+        time: '09:08',
+        text:'这是简介这是简介这是简介这是简介这是简介这是简介'
     },
     {
         url: 'picture/animate_11.jpg',
-        time: '09:08'
+        time: '09:08',
+        text:'这是简介这是简介这是简介这是简介这是简介这是简介'
     },
     {
         url: 'picture/animate_12.jpg',
-        time: '09:08'
+        time: '09:08',
+        text:'这是简介这是简介这是简介这是简介这是简介这是简介'
     },
     {
         url: 'picture/animate_13.jpg',
-        time: '09:08'
+        time: '09:08',
+        text:'这是简介这是简介这是简介这是简介这是简介这是简介'
     },
     {
         url: 'picture/animate_14.jpg',
-        time: '09:08'
+        time: '09:08',
+        text:'这是简介这是简介这是简介这是简介这是简介这是简介'
     },
     {
         url: 'picture/animate_15.jpg',
-        time: '09:08'
+        time: '09:08',
+        text:'这是简介这是简介这是简介这是简介这是简介这是简介'
     }
 ]
+
 //新动态数字
 const numberhop = [1000];
 //创建动画和排行模块
@@ -89,19 +106,32 @@ function createTab() {
     animate.innerHTML = html;
 }
 
-//有新动态、最新投稿切换
-function changeTab(str){
-var animate_content_images_a=document.querySelectorAll('.animate_content_images_a');
-    if(str=='dongtai'){
-        animate_content_images_a.forEach((e,index)=>{
-        e.innerHTML=`<img src="${animate_images[index+8].url}">`;
-    })
+//Tab有新动态、最新投稿切换时，图片切换，其他内容不变
+function changeContentImages(TabName) {
+    var animate_content_images_a = document.querySelectorAll('.animate_content_images_a');
+    if (TabName == 'dongtai') {
+        animate_content_images_a.forEach((e, index) => {
+            e.innerHTML = `
+            <img src="${animate_images[index+8].url}">
+            <p style="color:#000">${animate_images[index+8].text}</p>
+            <div class="PlayAndDanmarku">
+               <img src="picture/danmaku.png">
+               <img src="picture/playnumber.png">
+            </div>
+            `;
+        })
+    } else {
+        animate_content_images_a.forEach((e, index) => {
+            e.innerHTML = `
+            <img src="${animate_images[index%8].url}">
+            <p style="color:#000">${animate_images[index%8].text}</p>
+            <div class="PlayAndDanmarku">
+               <img src="picture/danmaku.png">
+               <img src="picture/playnumber.png">
+            </div>
+            `;
+        })
     }
-    else{
-        animate_content_images_a.forEach((e,index)=>{
-        e.innerHTML=`<img src="${animate_images[index%8].url}">`;
-    })
-    } 
 }
 
 function changeTabItemClass() {
@@ -110,24 +140,31 @@ function changeTabItemClass() {
     animate_tab_item.addEventListener('click', function() {
         animate_tab_itemon.className = 'animate_tab_item';
         this.className = 'animate_tab_itemon';
-        changeTab('dongtai');
+        changeContentImages('dongtai');
+        showContentItemHide();
     })
     animate_tab_itemon.addEventListener('click', function() {
         animate_tab_item.className = 'animate_tab_item';
         this.className = 'animate_tab_itemon';
-changeTab('tougao');
+        changeContentImages('tougao');
+        showContentItemHide();
     })
-    
+
 }
-//动画展示框
+//动画展示框和文字说明
 function createContentItems() {
     for (var i = 0; i < 8; i++) {
-        var animate_content=document.querySelector('.animate_content');
+        var animate_content = document.querySelector('.animate_content');
         const html = `
         <div class="animate_content_item">
             <div class="animate_content_images">
              <a href="#" class="animate_content_images_a">
               <img src="${animate_images[i].url}">
+              <p style="color:#000">${animate_images[i].text}</p>
+              <div class="PlayAndDanmarku">
+                <img src="picture/danmaku.png">
+                <img src="picture/playnumber.png">
+              </div>
              </a>
             </div>
             <div class="animate_content_item_hide" >
@@ -142,22 +179,31 @@ function createContentItems() {
     }
 }
 
-//鼠标浮动在动画框，滑动框显示
-function showContentItemHide(){
-    var animate_content_item=document.querySelectorAll('.animate_content_item');
-    var animate_content_item_hide=document.querySelectorAll('.animate_content_item_hide');
-    animate_content_item.forEach((e,index)=>{
-        e.addEventListener('mouseover',function(){
-            animate_content_item_hide[index].className='animate_content_item_show';
+//鼠标浮动在动画框，滑动框上移,播放和弹幕框下移
+function showContentItemHide() {
+    var animate_content_item = document.querySelectorAll('.animate_content_item');
+    var animate_content_item_hide = document.querySelectorAll('.animate_content_item_hide');
+    var PlayAndDanmarku=document.querySelectorAll('.PlayAndDanmarku');
+    animate_content_item.forEach((e, index) => {
+        e.addEventListener('mouseover', function() {
+            animate_content_item_hide[index].className = 'animate_content_item_show';
+            PlayAndDanmarku[index].style.transform='translateY(14px)';
+
         })
-        e.addEventListener('mouseleave',function(){
-            animate_content_item_hide[index].className='animate_content_item_hide';
+        e.addEventListener('mouseleave', function() {
+            animate_content_item_hide[index].className = 'animate_content_item_hide';
+            PlayAndDanmarku[index].style.transform='translateY(0px)';
         })
 
     })
 }
 
-createTab();
+
+function showAnimate(){
+    createTab();
 createContentItems();
 changeTabItemClass();
 showContentItemHide();
+}
+
+showAnimate();
