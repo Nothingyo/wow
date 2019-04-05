@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+
+</head>
+<body>
+
+<h2>AJAX</h2>
+<button type="button" onclick="req_All()">请求随机产生的全部数据</button>
+<div id="myDiv"></div>
+<p>输入姓名：</p>
+<input type="text" id="name"/><br/>
+<button id="input" onclick="inputName()">输入</button>
+<div id="inputNameIs"></div>
+
+
+<script>
+function newXHR(){
+	var xmlhttp;
+	if (window.XMLHttpRequest)
+	{
+		// IE7+, Firefox, Chrome, Opera, Safari 浏览器执行代码
+		xmlhttp=new XMLHttpRequest();
+	}
+	else
+	{
+		// IE6, IE5 浏览器执行代码
+		xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
+	}
+	return xmlhttp;
+}
+
+function req_All()
+{
+	var xmlhttp=newXHR();
+	xmlhttp.onreadystatechange=function()
+	{
+		if (xmlhttp.readyState==4 && xmlhttp.status==200)
+		{
+			document.getElementById("myDiv").innerHTML=xmlhttp.responseText;
+		}
+	}
+	xmlhttp.open("GET","https://easy-mock.com/mock/5ca5deba5c2b7f10af50e84a/example/mock",true);
+	xmlhttp.send();
+}
+
+//输入、保存名字并返回
+function inputName(){
+	var xmlhttp=newXHR();
+	var name=document.querySelector('#name');
+	xmlhttp.onreadystatechange=function()
+	{
+		if (xmlhttp.readyState==4 && xmlhttp.status==200)
+		{
+			console.log(xmlhttp);
+			document.querySelector("#inputNameIs").innerHTML=xmlhttp.responseText;
+		}
+	}
+	xmlhttp.open("GET","https://easy-mock.com/mock/5ca5deba5c2b7f10af50e84a/example/query?name="+name.value,true);
+	xmlhttp.send();
+}
+</script>
+
+</body>
+</html>

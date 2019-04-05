@@ -1,83 +1,83 @@
 const animate_images = [{
         url: 'picture/animate_0.jpg',
         time: '09:08',
-        text:'这是简介这是简介这是简介这是简介这是简介这是简介'
+        text: '这是简介这是简介这是简介这是简介这是简介这是简介'
     },
     {
         url: 'picture/animate_1.jpg',
         time: '04:48',
-        text:'这是简介这是简介这是简介这是简介这是简介这是简介'
+        text: '这是简介这是简介这是简介这是简介这是简介这是简介'
     },
     {
         url: 'picture/animate_2.jpg',
         time: '05:22',
-        text:'这是简介这是简介这是简介这是简介这是简介这是简介'
+        text: '这是简介这是简介这是简介这是简介这是简介这是简介'
     },
     {
         url: 'picture/animate_3.jpg',
         time: '23:01',
-        text:'这是简介这是简介这是简介这是简介这是简介这是简介'
+        text: '这是简介这是简介这是简介这是简介这是简介这是简介'
     },
     {
         url: 'picture/animate_4.jpg',
         time: '20:41',
-        text:'这是简介这是简介这是简介这是简介这是简介这是简介'
+        text: '这是简介这是简介这是简介这是简介这是简介这是简介'
     },
     {
         url: 'picture/animate_5.jpg',
         time: '02:22',
-        text:'这是简介这是简介这是简介这是简介这是简介这是简介'
+        text: '这是简介这是简介这是简介这是简介这是简介这是简介'
     },
 
     {
         url: 'picture/animate_6.jpg',
         time: '06:52',
-        text:'这是简介这是简介这是简介这是简介这是简介这是简介'
+        text: '这是简介这是简介这是简介这是简介这是简介这是简介'
     },
     {
         url: 'picture/animate_7.jpg',
         time: '12:57',
-        text:'这是简介这是简介这是简介这是简介这是简介这是简介'
+        text: '这是简介这是简介这是简介这是简介这是简介这是简介'
     },
     {
         url: 'picture/animate_8.jpg',
         time: '09:08',
-        text:'这是简介这是简介这是简介这是简介这是简介这是简介'
+        text: '这是简介这是简介这是简介这是简介这是简介这是简介'
     },
     {
         url: 'picture/animate_9.jpg',
         time: '09:08',
-        text:'这是简介这是简介这是简介这是简介这是简介这是简介'
+        text: '这是简介这是简介这是简介这是简介这是简介这是简介'
     },
     {
         url: 'picture/animate_10.jpg',
         time: '09:08',
-        text:'这是简介这是简介这是简介这是简介这是简介这是简介'
+        text: '这是简介这是简介这是简介这是简介这是简介这是简介'
     },
     {
         url: 'picture/animate_11.jpg',
         time: '09:08',
-        text:'这是简介这是简介这是简介这是简介这是简介这是简介'
+        text: '这是简介这是简介这是简介这是简介这是简介这是简介'
     },
     {
         url: 'picture/animate_12.jpg',
         time: '09:08',
-        text:'这是简介这是简介这是简介这是简介这是简介这是简介'
+        text: '这是简介这是简介这是简介这是简介这是简介这是简介'
     },
     {
         url: 'picture/animate_13.jpg',
         time: '09:08',
-        text:'这是简介这是简介这是简介这是简介这是简介这是简介'
+        text: '这是简介这是简介这是简介这是简介这是简介这是简介'
     },
     {
         url: 'picture/animate_14.jpg',
         time: '09:08',
-        text:'这是简介这是简介这是简介这是简介这是简介这是简介'
+        text: '这是简介这是简介这是简介这是简介这是简介这是简介'
     },
     {
         url: 'picture/animate_15.jpg',
         time: '09:08',
-        text:'这是简介这是简介这是简介这是简介这是简介这是简介'
+        text: '这是简介这是简介这是简介这是简介这是简介这是简介'
     }
 ]
 
@@ -183,27 +183,27 @@ function createContentItems() {
 function showContentItemHide() {
     var animate_content_item = document.querySelectorAll('.animate_content_item');
     var animate_content_item_hide = document.querySelectorAll('.animate_content_item_hide');
-    var PlayAndDanmarku=document.querySelectorAll('.PlayAndDanmarku');
+    var PlayAndDanmarku = document.querySelectorAll('.PlayAndDanmarku');
     animate_content_item.forEach((e, index) => {
         e.addEventListener('mouseover', function() {
             animate_content_item_hide[index].className = 'animate_content_item_show';
-            PlayAndDanmarku[index].style.transform='translateY(14px)';
+            PlayAndDanmarku[index].style.transform = 'translateY(14px)';
 
         })
         e.addEventListener('mouseleave', function() {
             animate_content_item_hide[index].className = 'animate_content_item_hide';
-            PlayAndDanmarku[index].style.transform='translateY(0px)';
+            PlayAndDanmarku[index].style.transform = 'translateY(0px)';
         })
 
     })
 }
 
 
-function showAnimate(){
+function showAnimate() {
     createTab();
-createContentItems();
-changeTabItemClass();
-showContentItemHide();
+    createContentItems();
+    changeTabItemClass();
+    showContentItemHide();
 }
 
 showAnimate();

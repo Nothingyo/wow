@@ -56,12 +56,22 @@ const sider_Items = [{
         name: "纪录片"
     }
 ]
-var sider = document.querySelector("#sider");
-for (var i = 0; i < 19; i++) {
-    var sider_context = sider.innerHTML;
-    var sider_item = `
+
+function showSider() {
+    var sider = document.querySelector("#sider");
+    for (var i = 0; i < 19; i++) {
+        var sider_context = sider.innerHTML;
+        var sider_item = `
     <div class="sider_item">${sider_Items[i].name}</div>
   `
-    sider_context += sider_item;
-    sider.innerHTML = sider_context;
+        sider_context += sider_item;
+        sider.innerHTML = sider_context;
+    }
+
+    //sider_item[0]的css圆角处理
+    var sider_item = document.querySelectorAll(".sider_item");
+    sider_item[0].style = "border-top-right-radius:4px;border-top-left-radius:4px";
+    sider_item[sider_item.length-1].style = "border-bottom-right-radius:4px;border-bottom-left-radius:4px";
 }
+
+showSider();
