@@ -28,7 +28,6 @@
         width: 46px;
         background-color: #f6f9fa;
         text-align: center;
-
         border-radius: 4px;
         border: solid #F0F8FF;
     }
@@ -40,7 +39,7 @@
     }
     #sider .sider_item:hover {
         background-color: 3399CC;
-        color:#fff;
+        color: #fff;
     }
     #slide {
         z-index: 1;
@@ -269,6 +268,88 @@
         width: 15px;
         float: left;
     }
+    .animate_right{
+        width: 260px;
+        height: 400px;
+    }
+    .rank-head{
+        height: 45px;
+        width: 260px;
+    }
+    .rank-head h3,.rank-tabon,.rank-taboff{
+        float: left;
+        text-align: center;
+        line-height: 55px;
+        color: #000;
+    }
+    .rank-head h3{
+        width: 36px;
+        height: 30px;
+    }
+    .rank-tabon,.rank-taboff{
+        display: inline-block;
+        margin:0px 10px;
+        height: 38px;
+        cursor:pointer;
+    }
+    .rank-tabon{
+        border-bottom-style:solid;
+        border-bottom-color:   33CCFF ;
+    }
+    .rank-tab{
+        float: left;
+        left: 36px;
+        height: 45px;
+    }
+    .select-date{
+        float: right;
+        right: 10px;
+        margin-top: 10px;
+        border:solid #B8B8B8; 
+        width: 57px;
+        height: 20px;
+        border-radius: 4px;
+        text-align: center;
+        line-height: 20px;
+        color: #000;
+    }
+    .rank-item{
+        position: relative;
+        height: 18px;
+        margin-bottom: 20px;
+        overflow: hidden;
+    }
+    .rank-number,.rank-number-first,.rank-number-red{
+        position: absolute;
+        height: 18px;
+        line-height: 18px;
+        left: 0px;
+        background-color: #b8c0cc;
+        padding:0px 3px;
+        text-align: center;
+        border-radius: 4px;
+    }
+    .rank-number-first,.rank-number-red{
+        background-color: #f25d8e;
+    }
+    .rank-item-illustration img{
+        width: 65px;
+        height:50px;
+        border-radius: 4px;
+    }
+    .rank-item-illustration span{
+        top:0px;
+        float: left;
+        color: #000;
+    }
+    .rank-item-illustration{
+        position: absolute;
+        left: 20px;
+        width: 240px;
+        color: #000;
+        cursor:pointer;
+    }
+
     </style>
 </head>
 
@@ -308,5 +389,5 @@
 <script src="showSlide2.js"> </script>
 <script src="Sider.js"> </script>
 <script src="animate.js"></script>
-
+<script src="animate_right.js"></script>
 </html>
