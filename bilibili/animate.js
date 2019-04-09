@@ -84,7 +84,7 @@ const animate_images = [{
 //新动态数字
 const numberhop = [1000];
 //创建动画和排行模块
-let createTab=()=> {
+let createTab = () => {
     let animate = document.querySelector("#animate");
     let html = `
         <div class="animate_left">
@@ -107,7 +107,7 @@ let createTab=()=> {
 }
 
 //Tab有新动态、最新投稿切换时，图片切换，其他内容不变
-let changeContentImages=TabName=> {
+let changeContentImages = TabName => {
     let animate_content_images_a = document.querySelectorAll('.animate_content_images_a');
     if (TabName === 'dongtai') {
         animate_content_images_a.forEach((e, index) => {
@@ -134,25 +134,25 @@ let changeContentImages=TabName=> {
     }
 }
 
-let changeTabItemClass=()=> {
+let changeTabItemClass = () => {
     let animate_tab_itemon = document.querySelector('.animate_tab_itemon');
     let animate_tab_item = document.querySelector('.animate_tab_item');
-    animate_tab_item.addEventListener('click', () =>{
+    animate_tab_item.addEventListener('click', () => {
         animate_tab_itemon.className = 'animate_tab_item';
-        this.className = 'animate_tab_itemon';
+        animate_tab_item.className = 'animate_tab_itemon';
         changeContentImages('dongtai');
         showContentItemHide();
     })
-    animate_tab_itemon.addEventListener('click', ()=> {
+    animate_tab_itemon.addEventListener('click', () => {
         animate_tab_item.className = 'animate_tab_item';
-        this.className = 'animate_tab_itemon';
+        animate_tab_itemon.className = 'animate_tab_itemon';
         changeContentImages('tougao');
         showContentItemHide();
     })
 
 }
 //动画展示框和文字说明
-let createContentItems=()=> {
+let createContentItems = () => {
     for (let i = 0; i < 8; i++) {
         let animate_content = document.querySelector('.animate_content');
         const html = `
@@ -180,17 +180,17 @@ let createContentItems=()=> {
 }
 
 //鼠标浮动在动画框，滑动框上移,播放和弹幕框下移
-showContentItemHide=()=> {
+showContentItemHide = () => {
     let animate_content_item = document.querySelectorAll('.animate_content_item');
     let animate_content_item_hide = document.querySelectorAll('.animate_content_item_hide');
     let PlayAndDanmarku = document.querySelectorAll('.PlayAndDanmarku');
     animate_content_item.forEach((e, index) => {
-        e.addEventListener('mouseover', ()=> {
+        e.addEventListener('mouseover', () => {
             animate_content_item_hide[index].className = 'animate_content_item_show';
             PlayAndDanmarku[index].style.transform = 'translateY(14px)';
 
         })
-        e.addEventListener('mouseleave', () =>{
+        e.addEventListener('mouseleave', () => {
             animate_content_item_hide[index].className = 'animate_content_item_hide';
             PlayAndDanmarku[index].style.transform = 'translateY(0px)';
         })
@@ -199,7 +199,7 @@ showContentItemHide=()=> {
 }
 
 
-let showAnimate=()=> {
+let showAnimate = () => {
     createTab();
     createContentItems();
     changeTabItemClass();

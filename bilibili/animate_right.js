@@ -71,11 +71,11 @@ const Right_Items = [{
 
 ]
 
-var flag = 1;
+let flag = 1;
 //flag用于判断Tab当前处于“全部”还是“原创”板块，初始页面默认为“全部”板块
 //seq为点击量排名
 //创建animate-right结构
-var createAnimateRight = () => {
+let createAnimateRight = () => {
     let animate_right = document.querySelector(".animate_right");
     html = `
         <header class="rank-head">
@@ -133,7 +133,7 @@ let createAnimateRightItems = () => {
 //按照tab切换、点击量显示内容
 //tab切换“全部”、“原创”板块
 //num=0显示前7个Right_Items排序内容，num=7显示后7个
-var num = 0;
+let num = 0;
 let showItemsAgain = num => {
     let rank_item_illustration = document.querySelectorAll(".rank-item-illustration");
     if (num == '0') {
@@ -185,13 +185,13 @@ let changeTab = () => {
     let rank_taboff = document.querySelector(".rank-taboff");
     rank_tabon.addEventListener('click', () => {
         rank_taboff.className = 'rank-taboff';
-        this.className = 'rank-tabon';
+        rank_tabon.className = 'rank-tabon';
         flag = 1;
         showItemsAgain(0);
     })
     rank_taboff.addEventListener('click', () => {
         rank_tabon.className = 'rank-taboff';
-        this.className = 'rank-tabon';
+        rank_taboff.className = 'rank-tabon';
         flag = 0;
         showItemsAgain(7);
     })
