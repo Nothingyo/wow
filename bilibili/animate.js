@@ -84,9 +84,9 @@ const animate_images = [{
 //新动态数字
 const numberhop = [1000];
 //创建动画和排行模块
-function createTab() {
-    var animate = document.querySelector("#animate");
-    var html = `
+let createTab=()=> {
+    let animate = document.querySelector("#animate");
+    let html = `
         <div class="animate_left">
             <div class="animate_headline">
                 <div class="headline_picture"></div>
@@ -107,9 +107,9 @@ function createTab() {
 }
 
 //Tab有新动态、最新投稿切换时，图片切换，其他内容不变
-function changeContentImages(TabName) {
-    var animate_content_images_a = document.querySelectorAll('.animate_content_images_a');
-    if (TabName == 'dongtai') {
+let changeContentImages=TabName=> {
+    let animate_content_images_a = document.querySelectorAll('.animate_content_images_a');
+    if (TabName === 'dongtai') {
         animate_content_images_a.forEach((e, index) => {
             e.innerHTML = `
             <img src="${animate_images[index+8].url}">
@@ -134,16 +134,16 @@ function changeContentImages(TabName) {
     }
 }
 
-function changeTabItemClass() {
-    var animate_tab_itemon = document.querySelector('.animate_tab_itemon');
-    var animate_tab_item = document.querySelector('.animate_tab_item');
-    animate_tab_item.addEventListener('click', function() {
+let changeTabItemClass=()=> {
+    let animate_tab_itemon = document.querySelector('.animate_tab_itemon');
+    let animate_tab_item = document.querySelector('.animate_tab_item');
+    animate_tab_item.addEventListener('click', () =>{
         animate_tab_itemon.className = 'animate_tab_item';
         this.className = 'animate_tab_itemon';
         changeContentImages('dongtai');
         showContentItemHide();
     })
-    animate_tab_itemon.addEventListener('click', function() {
+    animate_tab_itemon.addEventListener('click', ()=> {
         animate_tab_item.className = 'animate_tab_item';
         this.className = 'animate_tab_itemon';
         changeContentImages('tougao');
@@ -152,9 +152,9 @@ function changeTabItemClass() {
 
 }
 //动画展示框和文字说明
-function createContentItems() {
-    for (var i = 0; i < 8; i++) {
-        var animate_content = document.querySelector('.animate_content');
+let createContentItems=()=> {
+    for (let i = 0; i < 8; i++) {
+        let animate_content = document.querySelector('.animate_content');
         const html = `
         <div class="animate_content_item">
             <div class="animate_content_images">
@@ -180,17 +180,17 @@ function createContentItems() {
 }
 
 //鼠标浮动在动画框，滑动框上移,播放和弹幕框下移
-function showContentItemHide() {
-    var animate_content_item = document.querySelectorAll('.animate_content_item');
-    var animate_content_item_hide = document.querySelectorAll('.animate_content_item_hide');
-    var PlayAndDanmarku = document.querySelectorAll('.PlayAndDanmarku');
+showContentItemHide=()=> {
+    let animate_content_item = document.querySelectorAll('.animate_content_item');
+    let animate_content_item_hide = document.querySelectorAll('.animate_content_item_hide');
+    let PlayAndDanmarku = document.querySelectorAll('.PlayAndDanmarku');
     animate_content_item.forEach((e, index) => {
-        e.addEventListener('mouseover', function() {
+        e.addEventListener('mouseover', ()=> {
             animate_content_item_hide[index].className = 'animate_content_item_show';
             PlayAndDanmarku[index].style.transform = 'translateY(14px)';
 
         })
-        e.addEventListener('mouseleave', function() {
+        e.addEventListener('mouseleave', () =>{
             animate_content_item_hide[index].className = 'animate_content_item_hide';
             PlayAndDanmarku[index].style.transform = 'translateY(0px)';
         })
@@ -199,7 +199,7 @@ function showContentItemHide() {
 }
 
 
-function showAnimate() {
+let showAnimate=()=> {
     createTab();
     createContentItems();
     changeTabItemClass();

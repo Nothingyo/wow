@@ -33,10 +33,10 @@ const slide2_Images = [{
 ]
 
 //创建slide2的8个显示框，超过显示框的部分用overflow:hidden隐藏
-var slide2_images = document.querySelectorAll('.slide2_images');
+let slide2_images = document.querySelectorAll('.slide2_images');
 
-function createSlide2() {
-    for (var i = 0; i < 8; i++) {
+let createSlide2 = () => {
+    for (let i = 0; i < 8; i++) {
         const html = `
         <div class="slide2_images">
         <a href="#">
@@ -54,15 +54,15 @@ function createSlide2() {
     }
 }
 
-function showSlide2() {
+let showSlide2 = () => {
     createSlide2();
     //鼠标悬停，弹出详细内容,css用transform:translateY(-100px);实现
     slide2_images.forEach((e, index) => {
-        var slide2_hide = document.querySelectorAll('.slide2_hide');
-        e.onmouseover = function() {
+        let slide2_hide = document.querySelectorAll('.slide2_hide');
+        e.onmouseover = () => {
             slide2_hide[index].className = 'slide2_show';
         }
-        e.onmouseout = function() {
+        e.onmouseout = () => {
             slide2_hide[index].className = 'slide2_hide';
         }
     })

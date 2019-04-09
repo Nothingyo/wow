@@ -57,11 +57,11 @@ const sider_Items = [{
     }
 ]
 
-function showSider() {
-    var sider = document.querySelector("#sider");
-    for (var i = 0; i < 19; i++) {
-        var sider_context = sider.innerHTML;
-        var sider_item = `
+let showSider=()=> {
+    let sider = document.querySelector("#sider");
+    for (let i = 0; i < 19; i++) {
+        let sider_context = sider.innerHTML;
+        let sider_item = `
     <div class="sider_item">${sider_Items[i].name}</div>
   `
         sider_context += sider_item;
@@ -69,7 +69,7 @@ function showSider() {
     }
 
     //sider_item[0]的css圆角处理
-    var sider_item = document.querySelectorAll(".sider_item");
+    let sider_item = document.querySelectorAll(".sider_item");
     sider_item[0].style = "border-top-right-radius:4px;border-top-left-radius:4px";
     sider_item[sider_item.length-1].style = "border-bottom-right-radius:4px;border-bottom-left-radius:4px";
 }

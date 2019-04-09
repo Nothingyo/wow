@@ -71,73 +71,73 @@ const Right_Items = [{
 
 ]
 
-var flag=1;
+var flag = 1;
 //flag用于判断Tab当前处于“全部”还是“原创”板块，初始页面默认为“全部”板块
 //seq为点击量排名
 //创建animate-right结构
-function createAnimateRight() {
-    var animate_right = document.querySelector(".animate_right");
+var createAnimateRight = () => {
+    let animate_right = document.querySelector(".animate_right");
     html = `
-		<header class="rank-head">
-			<h3>排行</h3>
-			<div class="rank-tab">
-			  <div class="rank-tabon">全部</div>
-			  <div class="rank-taboff">原创</div>
-			</div>
-			<div class="select-date">三日></div>
-		</header>
-		<div class="rank-list">
-			<ul class="rank-list-items"></ul>
-		</div>
-		<a href="#" class="search-more">查看更多</a>
-	`
+        <header class="rank-head">
+            <h3>排行</h3>
+            <div class="rank-tab">
+              <div class="rank-tabon">全部</div>
+              <div class="rank-taboff">原创</div>
+            </div>
+            <div class="select-date">三日></div>
+        </header>
+        <div class="rank-list">
+            <ul class="rank-list-items"></ul>
+        </div>
+        <a href="#" class="search-more">查看更多</a>
+    `
     animate_right.innerHTML = html;
 }
 
 //排名展示部分
-function createAnimateRightItems() {
-    var rank_list_items = document.querySelector(".rank-list-items");
-    for (var i = 0; i < 7; i++) {
-        var number = i + 1;
+let createAnimateRightItems = () => {
+    let rank_list_items = document.querySelector(".rank-list-items");
+    for (let i = 0; i < 7; i++) {
+        let number = i + 1;
         if (i == 0) {
             html = ` 
-	  		  <li class="rank-item">
-					<i class="rank-number-first">${number}</i>
-					<a class="rank-item-illustration">
-						<img src=${Right_Items[i].url}>
-						${Right_Items[i].illustration}
-					</a>
-			  </li>
-			`
+              <li class="rank-item">
+                    <i class="rank-number-first">${number}</i>
+                    <a class="rank-item-illustration">
+                        <img src=${Right_Items[i].url}>
+                        ${Right_Items[i].illustration}
+                    </a>
+              </li>
+            `
         } else if (i == 1 || i == 2) {
             html = ` 
-	  		  <li class="rank-item">
-					<i class="rank-number-red">${number}</i>
-					<a class="rank-item-illustration">${Right_Items[i].illustration}</a>
-			  </li>
-			`
+              <li class="rank-item">
+                    <i class="rank-number-red">${number}</i>
+                    <a class="rank-item-illustration">${Right_Items[i].illustration}</a>
+              </li>
+            `
         } else {
             html = ` 
-	 		 <li class="rank-item">
-				<i class="rank-number">${number}</i>
-				<a class="rank-item-illustration">${Right_Items[i].illustration}</a>
-	  		 </li>
-			`
+             <li class="rank-item">
+                <i class="rank-number">${number}</i>
+                <a class="rank-item-illustration">${Right_Items[i].illustration}</a>
+             </li>
+            `
         }
 
         rank_list_items.innerHTML += html;
     }
-    var rank_item = document.querySelector(".rank-item");
+    let rank_item = document.querySelector(".rank-item");
     rank_item.style.height = "50px";
 }
 //按照tab切换、点击量显示内容
 //tab切换“全部”、“原创”板块
 //num=0显示前7个Right_Items排序内容，num=7显示后7个
 var num = 0;
-function showItemsAgain(num) {
-    var rank_item_illustration = document.querySelectorAll(".rank-item-illustration");
+let showItemsAgain = num => {
+    let rank_item_illustration = document.querySelectorAll(".rank-item-illustration");
     if (num == '0') {
-        for (var i = 0; i < 7; i++) {
+        for (let i = 0; i < 7; i++) {
             if (i == 0) {
                 html = ` <img src=${Right_Items[i%7].url}>${Right_Items[i%7].illustration}`
             } else {
@@ -146,7 +146,7 @@ function showItemsAgain(num) {
             rank_item_illustration[i].innerHTML = html;
         }
     } else {
-        for (var i = 0; i < 7; i++) {
+        for (let i = 0; i < 7; i++) {
             if (i == 0) {
                 html = ` <img src=${Right_Items[i+7].url}>${Right_Items[i+7].illustration}`
             } else {
@@ -158,49 +158,49 @@ function showItemsAgain(num) {
 
 }
 //降序排列
-function sortNumber(b, a) {
+/*function sortNumber(b, a) {
     return a.seq - b.seq;
-}
+}*/
 //每次点击，点击量seq+1
-function addSeq() {
-    var rank_item = document.querySelectorAll(".rank-item");
+let addSeq = () => {
+    let rank_item = document.querySelectorAll(".rank-item");
     rank_item.forEach((e, index) => {
-        e.addEventListener('click', function() {
-            if (flag == 1) {
+        e.addEventListener('click', () => {
+            if (flag) {
                 Right_Items[index].seq += 1;
-                Right_Items.sort(sortNumber);
+                Right_Items.sort((a, b) => b.seq - a.seq);
                 showItemsAgain(0);
             } else {
                 Right_Items[index + 7].seq += 1;
-                Right_Items.sort(sortNumber);
+                Right_Items.sort((a, b) => b.seq - a.seq);
                 showItemsAgain(7);
             }
         })
     })
 }
 
-//切换Tab,flag=1表示当前显示的是“全部”板块,flag=2则为“原创”板块
-function changeTab() {
-    var rank_tabon = document.querySelector(".rank-tabon");
-    var rank_taboff = document.querySelector(".rank-taboff");
-    rank_tabon.addEventListener('click', function() {
+//切换Tab,flag=1表示当前显示的是“全部”板块,flag=0则为“原创”板块
+let changeTab = () => {
+    let rank_tabon = document.querySelector(".rank-tabon");
+    let rank_taboff = document.querySelector(".rank-taboff");
+    rank_tabon.addEventListener('click', () => {
         rank_taboff.className = 'rank-taboff';
         this.className = 'rank-tabon';
         flag = 1;
         showItemsAgain(0);
     })
-    rank_taboff.addEventListener('click', function() {
+    rank_taboff.addEventListener('click', () => {
         rank_tabon.className = 'rank-taboff';
         this.className = 'rank-tabon';
-        flag = 2;
+        flag = 0;
         showItemsAgain(7);
     })
 }
 
-function showAnimateRight() {
+let showAnimateRight = () => {
     createAnimateRight();
     createAnimateRightItems();
-    addSeq();
     changeTab();
+    addSeq();
 }
 showAnimateRight();
